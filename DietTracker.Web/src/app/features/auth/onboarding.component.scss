@@ -1,0 +1,175 @@
+@use 'auth' as *;
+
+// ── Layout ────────────────────────────────────────────────────────────────────
+.onboarding-container {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f7fa;
+  padding: 1.5rem 1rem;
+}
+
+.onboarding-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.07);
+
+  @media (min-width: 480px) {
+    padding: 2.5rem 2rem;
+  }
+}
+
+// ── Progress ──────────────────────────────────────────────────────────────────
+.progress-bar {
+  margin-bottom: 2rem;
+}
+
+.progress-track {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #4f46e5;
+  border-radius: 99px;
+  transition: width 0.35s ease;
+}
+
+.progress-label {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+// ── Step header ───────────────────────────────────────────────────────────────
+.step-icon {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+// ── Number input with unit badge ──────────────────────────────────────────────
+.input-with-unit {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input {
+    flex: 1;
+    font-size: 16px;
+    padding: 0.8rem 3.5rem 0.8rem 1rem;
+    border: 1.5px solid #d1d5db;
+    border-radius: 12px;
+    outline: none;
+    -webkit-appearance: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+    }
+
+    &.invalid {
+      border-color: #ef4444;
+      &:focus { box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12); }
+    }
+
+    // Hide spinner arrows on number inputs
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button { -webkit-appearance: none; }
+    -moz-appearance: textfield;
+  }
+
+  .unit {
+    position: absolute;
+    right: 1rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+    pointer-events: none;
+  }
+}
+
+// ── Duration selector ─────────────────────────────────────────────────────────
+.duration-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.duration-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+  touch-action: manipulation;
+
+  &:hover { border-color: #a5b4fc; }
+
+  &.selected {
+    border-color: #4f46e5;
+    background: #eef2ff;
+  }
+
+  .dur-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #1a1a2e;
+  }
+
+  .dur-sub {
+    font-size: 0.8rem;
+    color: #6b7280;
+  }
+}
+
+// ── Button row (back + continue) ──────────────────────────────────────────────
+.btn-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.btn-back {
+  padding: 0.9rem 1.25rem;
+  background: transparent;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: border-color 0.2s;
+  white-space: nowrap;
+
+  &:hover { border-color: #9ca3af; }
+}
+
+.flex-1 { flex: 1; }
+
+// ── Label helpers ─────────────────────────────────────────────────────────────
+.required {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+.optional {
+  color: #9ca3af;
+  font-weight: 400;
+  font-size: 0.8rem;
+}

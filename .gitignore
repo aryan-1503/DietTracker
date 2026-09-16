@@ -1,0 +1,19 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.kiro
+appsettings.Development.json
+
+# Angular
+DietTracker.Web/node_modules/
+DietTracker.Web/dist/
+DietTracker.Web/.angular/
+DietTracker.Web/.vscode/
+
+# General
+.DS_Store
+Thumbs.db
+*.log

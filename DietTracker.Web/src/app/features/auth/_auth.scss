@@ -1,0 +1,176 @@
+// ─── Shared auth page styles (mobile-first) ──────────────────────────────────
+// Used by login, register, verify-email, and onboarding.
+
+// ── Layout ────────────────────────────────────────────────────────────────────
+.auth-container {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;       // always vertically centered
+  justify-content: center;
+  background: #f5f7fa;
+  padding: 1.5rem 1rem;
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.07);
+
+  @media (min-width: 480px) {
+    padding: 2.5rem 2rem;
+  }
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+.auth-logo {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a2e;
+
+  @media (min-width: 480px) {
+    font-size: 1.75rem;
+  }
+}
+
+.subtitle {
+  margin: 0 0 1.75rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+// ── Banners ───────────────────────────────────────────────────────────────────
+.error-banner {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.info-banner {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.success-banner {
+  background: #f0fdf4;
+  color: #166534;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+// ── Form fields ───────────────────────────────────────────────────────────────
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.1rem;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    color: #374151;
+  }
+
+  input {
+    font-size: 16px;           // prevents iOS auto-zoom
+    padding: 0.8rem 1rem;
+    border: 1.5px solid #d1d5db;
+    border-radius: 12px;
+    outline: none;
+    width: 100%;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    color: #111827;
+
+    &::placeholder { color: #9ca3af; }
+
+    &:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+    }
+
+    &.invalid {
+      border-color: #ef4444;
+      &:focus { box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12); }
+    }
+  }
+
+  .field-error {
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+
+  .field-hint {
+    color: #9ca3af;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+}
+
+// ── Primary button ────────────────────────────────────────────────────────────
+.btn-primary {
+  width: 100%;
+  padding: 0.9rem;
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s, transform 0.1s;
+  touch-action: manipulation;
+
+  &:active:not(:disabled) { transform: scale(0.98); }
+  &:hover:not(:disabled) { background: #4338ca; }
+  &:disabled { opacity: 0.55; cursor: not-allowed; }
+}
+
+// ── Switch link ───────────────────────────────────────────────────────────────
+.switch-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+
+  a {
+    color: #4f46e5;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.1rem 0;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+// ── OTP / verification code input ─────────────────────────────────────────────
+.code-input {
+  font-size: 1.5rem !important;
+  text-align: center;
+  letter-spacing: 0.3em;
+  font-weight: 600;
+}

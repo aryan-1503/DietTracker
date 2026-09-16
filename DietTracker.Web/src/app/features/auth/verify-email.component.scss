@@ -1,0 +1,36 @@
+@use 'auth' as *;
+
+.dev-hint {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: #fefce8;
+  border: 1px dashed #ca8a04;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  color: #713f12;
+
+  p {
+    margin: 0 0 0.4rem;
+    font-weight: 500;
+  }
+
+  code {
+    display: block;
+    word-break: break-all;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-family: monospace;
+  }
+}
+
+.copied-badge {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: #166534;
+  font-weight: 600;
+}
