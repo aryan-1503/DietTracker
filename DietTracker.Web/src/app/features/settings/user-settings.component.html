@@ -1,0 +1,55 @@
+<div class="settings-layout">
+
+  <!-- Topbar -->
+  <div class="settings-topbar">
+    <button class="di-topbar__back" (click)="goBack()" aria-label="Back">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <span class="di-topbar__title">Settings</span>
+  </div>
+
+  <div class="settings-content">
+
+    @if (loading()) {
+      <div style="text-align:center;padding:60px 0;color:#9ca3af;font-size:14px">Loading…</div>
+    } @else {
+
+      @if (success()) {
+        <div class="settings-success">✅ Settings saved!</div>
+      }
+
+      @if (error()) {
+        <div style="background:#fee2e2;color:#dc2626;padding:12px 16px;border-radius:10px;font-size:14px;margin-bottom:16px">
+          {{ error() }}
+        </div>
+      }
+
+      <div class="settings-card">
+        <div class="settings-card__title">📋 Meal Reminder</div>
+
+        <div class="field">
+          <label>Reminder time</label>
+          <input type="time" [(ngModel)]="reminderTime"/>
+          <small>You'll receive an email at this time if any meal slots are incomplete.</small>
+        </div>
+
+        <div class="field">
+          <label>Your time zone</label>
+          <select [(ngModel)]="timeZoneId">
+            @for (tz of timezones; track tz.value) {
+              <option [value]="tz.value">{{ tz.label }}</option>
+            }
+          </select>
+          <small>Reminder is sent at the time above in your selected time zone.</small>
+        </div>
+
+        <button class="btn-save" (click)="save()" [disabled]="saving()">
+          {{ saving() ? 'Saving…' : 'Save Settings' }}
+        </button>
+      </div>
+
+    }
+  </div>
+</div>

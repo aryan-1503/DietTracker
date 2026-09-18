@@ -58,6 +58,13 @@ function endAfterStart(group: AbstractControl) {
               <span class="primary-checkbox-hint">Your primary plan will be used for daily intake tracking</span>
             </span>
           </label>
+
+          <!-- Start date -->
+          <div class="field" style="margin-top:1rem">
+            <label for="startDate">Start date</label>
+            <input id="startDate" type="date" formControlName="startDate" />
+            <span class="field-hint">When did you start following this plan? (optional)</span>
+          </div>
         </div>
 
         <!-- Meal slots -->
@@ -186,6 +193,7 @@ export class DietPlanFormComponent implements OnInit {
   form = this.fb.group({
     name: ['', Validators.required],
     isPrimary: [false],
+    startDate: [''],   // YYYY-MM-DD string; empty = null
     mealSlots: this.fb.array([this.makeSlot()]),
   });
 
@@ -221,6 +229,7 @@ export class DietPlanFormComponent implements OnInit {
         }
         this.form.setControl('name', this.fb.control(plan.name, Validators.required));
         this.form.setControl('isPrimary', this.fb.control(plan.isPrimary));
+        this.form.setControl('startDate', this.fb.control(plan.startDate ?? ''));
         this.form.setControl('mealSlots', slotsArray);
         this.loadingPlan.set(false);
       },
@@ -275,6 +284,7 @@ export class DietPlanFormComponent implements OnInit {
     const payload = {
       name: (v.name as string).trim(),
       isPrimary: v.isPrimary as boolean,
+      startDate: v.startDate ? (v.startDate as string) : null,
       mealSlots: (v.mealSlots as any[]).map((s: any, i: number) => ({
         startTime: s.startTime,
         endTime: s.endTime,

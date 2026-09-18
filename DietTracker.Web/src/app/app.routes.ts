@@ -76,5 +76,19 @@ export const routes: Routes = [
       import('./features/profile/profile.component').then(m => m.ProfileComponent),
   },
 
+  {
+    path: 'daily-intake',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/daily-intake/daily-intake.component').then(m => m.DailyIntakeComponent),
+  },
+
+  {
+    path: 'settings',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/settings/user-settings.component').then(m => m.UserSettingsComponent),
+  },
+
   { path: '**', redirectTo: 'dashboard' },
 ];

@@ -20,6 +20,9 @@ public class DietPlan
 
     public bool IsPrimary { get; set; } = false;
 
+    /// <summary>Optional date when the user started following this plan.</summary>
+    public DateOnly? StartDate { get; set; }
+
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;

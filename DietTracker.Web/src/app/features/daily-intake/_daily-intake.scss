@@ -1,0 +1,425 @@
+// ── Daily Intake shared styles ─────────────────────────────────────────────────
+
+$purple: #4f46e5;
+$purple-light: #ede9fe;
+$green: #16a34a;
+$green-light: #dcfce7;
+$orange: #ea580c;
+$orange-light: #ffedd5;
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-400: #9ca3af;
+$gray-600: #4b5563;
+$gray-900: #111827;
+$red: #dc2626;
+$red-light: #fee2e2;
+
+// ── Layout ──────────────────────────────────────────────────────────────────
+
+.di-layout {
+  min-height: 100dvh;
+  background: $gray-50;
+  display: flex;
+  flex-direction: column;
+}
+
+.di-topbar {
+  background: #fff;
+  border-bottom: 1px solid $gray-200;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  .di-topbar__back {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    color: $gray-600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover { background: $gray-100; }
+  }
+
+  .di-topbar__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: $gray-900;
+    flex: 1;
+  }
+
+  .di-topbar__date-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    color: $gray-600;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      color: $gray-600;
+      &:hover { background: $gray-100; }
+      &:disabled { opacity: 0.4; cursor: default; }
+    }
+  }
+}
+
+.di-content {
+  flex: 1;
+  padding: 16px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+// ── Progress bar ─────────────────────────────────────────────────────────────
+
+.di-progress {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: $gray-600;
+
+    strong { color: $gray-900; }
+  }
+
+  &__bar {
+    height: 8px;
+    background: $gray-200;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    background: $purple;
+    border-radius: 99px;
+    transition: width 0.4s ease;
+
+    &--complete { background: $green; }
+  }
+}
+
+// ── Meal slot card ────────────────────────────────────────────────────────────
+
+.di-slot {
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+
+  &--complete { border-color: $green; }
+  &--editing  { border-color: $purple; }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  &__status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $gray-200;
+    flex-shrink: 0;
+
+    &--complete { background: $green; }
+  }
+
+  &__meta {
+    flex: 1;
+  }
+
+  &__category {
+    font-size: 15px;
+    font-weight: 600;
+    color: $gray-900;
+  }
+
+  &__time {
+    font-size: 12px;
+    color: $gray-400;
+    margin-top: 2px;
+  }
+
+  &__badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 99px;
+    background: $green-light;
+    color: $green;
+
+    &--incomplete {
+      background: $gray-100;
+      color: $gray-400;
+    }
+  }
+
+  &__chevron {
+    color: $gray-400;
+    transition: transform 0.2s;
+    &--open { transform: rotate(180deg); }
+  }
+}
+
+// ── Slot form ─────────────────────────────────────────────────────────────────
+
+.di-form {
+  padding: 0 16px 16px;
+  border-top: 1px solid $gray-100;
+
+  .field {
+    margin-top: 14px;
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: $gray-600;
+      margin-bottom: 6px;
+    }
+
+    select,
+    input[type="time"],
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid $gray-200;
+      border-radius: 8px;
+      font-size: 15px;
+      color: $gray-900;
+      background: #fff;
+      outline: none;
+      box-sizing: border-box;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color 0.15s;
+
+      &:focus { border-color: $purple; }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 72px;
+    }
+  }
+
+  .di-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: $purple;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    span {
+      font-size: 14px;
+      color: $gray-600;
+      user-select: none;
+    }
+  }
+
+  .char-limit {
+    font-size: 11px;
+    color: $gray-400;
+    text-align: right;
+    margin-top: 4px;
+    &--warn { color: $orange; }
+    &--over  { color: $red; }
+  }
+
+  .di-form__actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+
+    button {
+      flex: 1;
+      padding: 11px 0;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+
+      &:disabled { opacity: 0.5; cursor: default; }
+    }
+  }
+
+  .btn-save {
+    background: $purple;
+    color: #fff;
+    &:hover:not(:disabled) { opacity: 0.9; }
+  }
+
+  .btn-cancel {
+    background: $gray-100;
+    color: $gray-600;
+    &:hover:not(:disabled) { background: $gray-200; }
+  }
+}
+
+// ── Empty state ───────────────────────────────────────────────────────────────
+
+.di-empty {
+  text-align: center;
+  padding: 60px 24px;
+  color: $gray-400;
+
+  &__icon { font-size: 3rem; margin-bottom: 12px; }
+  &__title { font-size: 18px; font-weight: 600; color: $gray-600; margin-bottom: 8px; }
+  &__body  { font-size: 14px; line-height: 1.6; }
+
+  .btn-link {
+    background: none;
+    border: none;
+    color: $purple;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+// ── Settings page ─────────────────────────────────────────────────────────────
+
+.settings-layout {
+  min-height: 100dvh;
+  background: $gray-50;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-topbar {
+  @extend .di-topbar;
+}
+
+.settings-content {
+  flex: 1;
+  padding: 16px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.settings-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+
+  &__title {
+    font-size: 15px;
+    font-weight: 600;
+    color: $gray-900;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid $gray-100;
+  }
+
+  .field {
+    margin-bottom: 16px;
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: $gray-600;
+      margin-bottom: 6px;
+    }
+
+    select,
+    input[type="time"],
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid $gray-200;
+      border-radius: 8px;
+      font-size: 15px;
+      color: $gray-900;
+      background: #fff;
+      outline: none;
+      box-sizing: border-box;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color 0.15s;
+      &:focus { border-color: $purple; }
+    }
+
+    small {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      color: $gray-400;
+    }
+  }
+
+  .btn-save {
+    width: 100%;
+    padding: 12px;
+    background: $purple;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    &:hover:not(:disabled) { opacity: 0.9; }
+    &:disabled { opacity: 0.5; cursor: default; }
+  }
+}
+
+.settings-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: $green-light;
+  border-radius: 10px;
+  color: $green;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}

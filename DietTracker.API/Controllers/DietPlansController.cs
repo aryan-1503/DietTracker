@@ -33,6 +33,7 @@ public class DietPlansController : ControllerBase
                 Name = dp.Name,
                 IsActive = dp.IsActive,
                 IsPrimary = dp.IsPrimary,
+                StartDate = dp.StartDate,
                 MealSlotCount = dp.MealSlots.Count,
                 CreatedAt = dp.CreatedAt,
                 UpdatedAt = dp.UpdatedAt,
@@ -79,6 +80,7 @@ public class DietPlansController : ControllerBase
             UserId = userId.Value,
             Name = dto.Name.Trim(),
             IsPrimary = dto.IsPrimary,
+            StartDate = dto.StartDate,
             MealSlots = dto.MealSlots.Select((s, i) => new MealSlot
             {
                 StartTime = s.StartTime,
@@ -96,12 +98,18 @@ public class DietPlansController : ControllerBase
         _db.DietPlans.Add(plan);
         await _db.SaveChangesAsync();
 
-        // If this plan is marked primary, clear all other plans for this user
-        if (plan.IsPrimary)
+        // Auto-set as primary if it's the user's only plan OR was explicitly requested
+        var planCount = await _db.DietPlans.CountAsync(dp => dp.UserId == userId);
+        if (plan.IsPrimary || planCount == 1)
         {
             await _db.DietPlans
                 .Where(dp => dp.UserId == userId && dp.IsPrimary && dp.Id != plan.Id)
                 .ExecuteUpdateAsync(s => s.SetProperty(dp => dp.IsPrimary, false));
+            if (!plan.IsPrimary)
+            {
+                plan.IsPrimary = true;
+                await _db.SaveChangesAsync();
+            }
         }
 
         // Reload with navigation properties
@@ -138,8 +146,11 @@ public class DietPlansController : ControllerBase
         // Replace in-place: remove old children, add new
         plan.Name = dto.Name.Trim();
         plan.IsPrimary = dto.IsPrimary;
+        plan.StartDate = dto.StartDate;
         plan.UpdatedAt = DateTime.UtcNow;
 
+        // DB cascade (FK_DailyEntries_MealSlots CASCADE, FK_DailyEntries_FoodOptions SET NULL)
+        // handles cleanup of DailyEntries automatically when slots are removed.
         _db.MealSlots.RemoveRange(plan.MealSlots);
 
         plan.MealSlots = dto.MealSlots.Select((s, i) => new MealSlot
@@ -298,6 +309,7 @@ public class DietPlansController : ControllerBase
         Name = plan.Name,
         IsActive = plan.IsActive,
         IsPrimary = plan.IsPrimary,
+        StartDate = plan.StartDate,
         CreatedAt = plan.CreatedAt,
         UpdatedAt = plan.UpdatedAt,
         MealSlots = plan.MealSlots

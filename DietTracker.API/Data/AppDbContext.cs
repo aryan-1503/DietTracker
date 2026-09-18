@@ -11,6 +11,9 @@ public class AppDbContext : DbContext
     public DbSet<DietPlan> DietPlans { get; set; }
     public DbSet<MealSlot> MealSlots { get; set; }
     public DbSet<FoodOption> FoodOptions { get; set; }
+    public DbSet<DailyEntry> DailyEntries { get; set; }
+    public DbSet<UserSettings> UserSettings { get; set; }
+    public DbSet<ReminderLog> ReminderLogs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -40,6 +43,8 @@ public class AppDbContext : DbContext
         {
             entity.HasIndex(dp => dp.UserId)
                   .HasDatabaseName("IX_DietPlans_UserId");
+
+            entity.Property(dp => dp.StartDate).HasColumnType("date");
 
             entity.HasOne(dp => dp.User)
                   .WithMany()
@@ -78,6 +83,50 @@ public class AppDbContext : DbContext
 
             entity.Property(fo => fo.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
             entity.Property(fo => fo.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
+        });
+
+        // ── UserSettings ──────────────────────────────────────────────────────
+        modelBuilder.Entity<UserSettings>(entity =>
+        {
+            entity.HasIndex(us => us.UserId).IsUnique().HasDatabaseName("UQ_UserSettings_UserId");
+            entity.HasOne(us => us.User).WithOne()
+                  .HasForeignKey<UserSettings>(us => us.UserId).OnDelete(DeleteBehavior.Cascade);
+            entity.Property(us => us.ReminderTime).HasDefaultValue("21:00");
+            entity.Property(us => us.TimeZoneId).HasDefaultValue("UTC");
+            entity.Property(us => us.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+            entity.Property(us => us.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
+        });
+
+        // ── DailyEntry ────────────────────────────────────────────────────────
+        modelBuilder.Entity<DailyEntry>(entity =>
+        {
+            entity.HasIndex(de => new { de.UserId, de.EntryDate })
+                  .HasDatabaseName("IX_DailyEntries_UserId_EntryDate");
+            entity.HasIndex(de => new { de.UserId, de.EntryDate, de.MealSlotId })
+                  .IsUnique().HasDatabaseName("UQ_DailyEntries_UserDateSlot");
+            entity.Property(de => de.EntryDate).HasColumnType("date");
+            entity.HasOne(de => de.User).WithMany()
+                  .HasForeignKey(de => de.UserId).OnDelete(DeleteBehavior.Cascade);
+            entity.HasOne(de => de.DietPlan).WithMany()
+                  .HasForeignKey(de => de.DietPlanId).OnDelete(DeleteBehavior.Cascade);
+            entity.HasOne(de => de.MealSlot).WithMany()
+                  .HasForeignKey(de => de.MealSlotId).OnDelete(DeleteBehavior.Cascade);
+            entity.HasOne(de => de.FoodOption).WithMany()
+                  .HasForeignKey(de => de.FoodOptionId).OnDelete(DeleteBehavior.SetNull)
+                  .IsRequired(false);
+            entity.Property(de => de.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+            entity.Property(de => de.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
+        });
+
+        // ── ReminderLog ───────────────────────────────────────────────────────
+        modelBuilder.Entity<ReminderLog>(entity =>
+        {
+            entity.HasIndex(rl => new { rl.UserId, rl.ReminderDate })
+                  .IsUnique().HasDatabaseName("UQ_ReminderLogs_UserDate");
+            entity.Property(rl => rl.ReminderDate).HasColumnType("date");
+            entity.HasOne(rl => rl.User).WithMany()
+                  .HasForeignKey(rl => rl.UserId).OnDelete(DeleteBehavior.Cascade);
+            entity.Property(rl => rl.SentAt).HasDefaultValueSql("GETUTCDATE()");
         });
     }
 }

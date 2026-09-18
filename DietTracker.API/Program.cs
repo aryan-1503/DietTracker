@@ -50,6 +50,8 @@ builder.Services.AddCors(options =>
 // ── Services ──────────────────────────────────────────────────────────────────
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IEmailService, SmtpEmailService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddHostedService<DailyReminderService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();

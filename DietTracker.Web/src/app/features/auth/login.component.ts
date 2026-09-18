@@ -3,6 +3,7 @@ import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
       <div class="auth-card">
         <div class="auth-logo">🥗</div>
         <h1>Welcome back</h1>
-        <p class="subtitle">Sign in to DietTracker</p>
+        <p class="subtitle">Sign in to {{ appName }}</p>
 
         <div *ngIf="errorMessage()" class="error-banner" role="alert">
           {{ errorMessage() }}
@@ -54,6 +55,7 @@ export class LoginComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
+  readonly appName = environment.appName;
   readonly loading = signal(false);
   readonly errorMessage = signal('');
 

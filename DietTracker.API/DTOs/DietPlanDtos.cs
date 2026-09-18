@@ -28,6 +28,7 @@ public class DietPlanDto
     public string Name { get; set; } = string.Empty;
     public bool IsActive { get; set; }
     public bool IsPrimary { get; set; }
+    public DateOnly? StartDate { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public List<MealSlotDto> MealSlots { get; set; } = new();
@@ -39,6 +40,7 @@ public class DietPlanSummaryDto
     public string Name { get; set; } = string.Empty;
     public bool IsActive { get; set; }
     public bool IsPrimary { get; set; }
+    public DateOnly? StartDate { get; set; }
     public int MealSlotCount { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
@@ -91,11 +93,14 @@ public class MealSlotRequestDto
 
 public class CreateDietPlanRequestDto
 {
-    [Required]
+    [Required]  
     [MaxLength(200)]
     public string Name { get; set; } = string.Empty;
 
     public bool IsPrimary { get; set; } = false;
+
+    /// <summary>Optional date when the user started following this plan.</summary>
+    public DateOnly? StartDate { get; set; }
 
     [Required]
     [MinLength(1, ErrorMessage = "At least one meal slot is required.")]
@@ -109,6 +114,9 @@ public class UpdateDietPlanRequestDto
     public string Name { get; set; } = string.Empty;
 
     public bool IsPrimary { get; set; } = false;
+
+    /// <summary>Optional date when the user started following this plan.</summary>
+    public DateOnly? StartDate { get; set; }
 
     [Required]
     [MinLength(1, ErrorMessage = "At least one meal slot is required.")]

@@ -1,0 +1,331 @@
+$purple:      #4f46e5;
+$purple-light:#ede9fe;
+$green:       #16a34a;
+$green-light: #dcfce7;
+$orange:      #ea580c;
+$orange-light:#ffedd5;
+$gray-50:     #f9fafb;
+$gray-100:    #f3f4f6;
+$gray-200:    #e5e7eb;
+$gray-400:    #9ca3af;
+$gray-600:    #4b5563;
+$gray-900:    #111827;
+$red:         #dc2626;
+$font:        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+// ── Layout ────────────────────────────────────────────────────────────────────
+
+.db-layout {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: $gray-50;
+  font-family: $font;
+}
+
+.db-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 16px;
+  background: #fff;
+  border-bottom: 1px solid $gray-200;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  &__actions { display: flex; align-items: center; gap: 4px; }
+}
+
+.db-brand {
+  font-size: 17px;
+  font-weight: 700;
+  color: $purple;
+}
+
+.db-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border: none; background: transparent;
+  border-radius: 10px;
+  color: $gray-600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  &:hover { background: $gray-100; color: $gray-900; }
+  &--danger { color: $red; &:hover { background: #fee2e2; color: #b91c1c; } }
+}
+
+.db-content {
+  flex: 1;
+  padding: 16px;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+// ── Welcome ───────────────────────────────────────────────────────────────────
+
+.db-welcome {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+
+  &__greeting { font-size: 13px; color: $gray-600; }
+  &__name     { font-size: 20px; font-weight: 700; color: $gray-900; }
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+
+.db-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+
+  &--empty {
+    text-align: center;
+    padding: 32px 16px;
+  }
+}
+
+.db-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: $gray-900;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $gray-600;
+}
+
+// ── Loader / Empty ────────────────────────────────────────────────────────────
+
+.db-loader-wrap { text-align: center; padding: 60px 0; }
+.db-loader {
+  display: inline-block;
+  width: 36px; height: 36px;
+  border: 3px solid $gray-200;
+  border-top-color: $purple;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.db-empty {
+  text-align: center;
+  padding: 24px 0 8px;
+  &__icon  { font-size: 2.5rem; margin-bottom: 8px; }
+  &__title { font-size: 16px; font-weight: 600; color: $gray-600; margin-bottom: 6px; }
+  &__body  { font-size: 13px; color: $gray-400; line-height: 1.5; }
+}
+
+.db-btn-link {
+  margin-top: 14px;
+  background: none; border: none;
+  color: $purple; font-size: 14px; font-weight: 600;
+  cursor: pointer; padding: 0;
+  &:hover { text-decoration: underline; }
+}
+
+// ── Today's Status ────────────────────────────────────────────────────────────
+
+.db-today {
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  &__title  { font-size: 15px; font-weight: 600; color: $gray-900; }
+  &__plan   { font-size: 12px; color: $gray-400; margin-top: 2px; }
+
+  &__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+
+  &__count { font-size: 14px; font-weight: 500; color: $gray-900; }
+  &__pct   { font-size: 18px; font-weight: 700; color: $purple; }
+
+  &__all-done { margin-top: 10px; font-size: 13px; color: $green; font-weight: 500; }
+  &__remaining { margin-top: 10px; font-size: 12px; color: $gray-400; }
+}
+
+.db-progress-bar {
+  height: 8px;
+  background: $gray-100;
+  border-radius: 99px;
+  overflow: hidden;
+
+  &__fill {
+    height: 100%;
+    background: $purple;
+    border-radius: 99px;
+    transition: width 0.4s ease;
+    &--done { background: $green; }
+  }
+}
+
+.db-btn-sm {
+  font-size: 12px;
+  font-weight: 600;
+  color: $purple;
+  background: $purple-light;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  &:hover { opacity: 0.85; }
+}
+
+// ── Key Stats ─────────────────────────────────────────────────────────────────
+
+.db-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.db-stat {
+  background: $gray-50;
+  border-radius: 10px;
+  padding: 12px;
+
+  &__value { font-size: 22px; font-weight: 700; color: $purple; }
+  &__label { font-size: 12px; font-weight: 600; color: $gray-900; margin-top: 2px; }
+  &__sub   { font-size: 11px; color: $gray-400; margin-top: 2px; }
+
+  &--warn .db-stat__value { color: $orange; }
+}
+
+// ── Adherence Chart ───────────────────────────────────────────────────────────
+
+.db-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+
+  .db-section-title { margin-bottom: 0; }
+}
+
+.db-chart-toggle {
+  display: flex;
+  gap: 4px;
+}
+
+.db-toggle-btn {
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1.5px solid $gray-200;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  color: $gray-600;
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &--active {
+    background: $purple;
+    border-color: $purple;
+    color: #fff;
+  }
+}
+
+.db-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.db-chart-empty {
+  text-align: center;
+  padding: 32px 0;
+  color: $gray-400;
+  font-size: 13px;
+}
+
+.db-chart-note {
+  margin-top: 8px;
+  font-size: 11px;
+  color: $gray-400;
+  line-height: 1.4;
+}
+
+// ── Recent Activity ───────────────────────────────────────────────────────────
+
+.db-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.db-activity-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.1s;
+
+  &:hover { background: $gray-50; }
+
+  &__date  { flex: 1; font-size: 13px; color: $gray-900; font-weight: 500; }
+  &__meals { font-size: 12px; color: $gray-600; white-space: nowrap; }
+  &__adh   { font-size: 12px; color: $gray-400; white-space: nowrap; }
+}
+
+.db-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+
+  &--complete { background: $green-light;  color: $green; }
+  &--partial  { background: $orange-light; color: $orange; }
+  &--missing  { background: $gray-100;     color: $gray-400; }
+}
+
+// ── Nav Cards ─────────────────────────────────────────────────────────────────
+
+.db-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.db-nav-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  transition: box-shadow 0.15s, transform 0.1s;
+
+  &:active  { transform: scale(0.98); }
+  &:hover   { box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+
+  &__icon  { font-size: 1.6rem; }
+  &__text  { display: flex; flex-direction: column; gap: 2px; }
+  &__title { font-size: 12px; font-weight: 600; color: $gray-900; }
+  &__sub   { font-size: 10px; color: $gray-400; }
+}

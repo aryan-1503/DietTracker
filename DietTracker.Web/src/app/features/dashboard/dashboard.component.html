@@ -1,0 +1,207 @@
+<div class="db-layout">
+
+  <!-- Topbar -->
+  <header class="db-topbar">
+    <span class="db-brand">🥗 DietTracker</span>
+    <div class="db-topbar__actions">
+      <button class="db-icon-btn" (click)="goToProfile()" aria-label="Profile" title="Profile">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </button>
+      <button class="db-icon-btn db-icon-btn--danger" (click)="logout()" aria-label="Sign out" title="Sign out">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="db-content">
+
+    <!-- Welcome -->
+    @if (profile()) {
+      <div class="db-welcome">
+        <span class="db-welcome__greeting">👋 Welcome back,</span>
+        <span class="db-welcome__name">{{ profile()!.fullName }}</span>
+      </div>
+    }
+
+    <!-- Loading -->
+    @if (loading()) {
+      <div class="db-loader-wrap">
+        <div class="db-loader"></div>
+      </div>
+    }
+
+    <!-- Error -->
+    @else if (error()) {
+      <div class="db-empty">
+        <div class="db-empty__icon">⚠️</div>
+        <div class="db-empty__title">Could not load dashboard</div>
+        <div class="db-empty__body">Please refresh the page.</div>
+      </div>
+    }
+
+    @else if (dashboard()) {
+
+      <!-- ── TODAY'S STATUS ───────────────────────────────────────────── -->
+      @if (!dashboard()!.todayStatus.hasPrimaryPlan) {
+        <section class="db-card db-card--empty">
+          <div class="db-empty__icon">🥗</div>
+          <div class="db-empty__title">No primary diet plan</div>
+          <div class="db-empty__body">Set a plan as primary to see today's progress.</div>
+          <button class="db-btn-link" (click)="goToDietPlans()">Go to Diet Plans →</button>
+        </section>
+      } @else {
+        @let ts = dashboard()!.todayStatus;
+        <section class="db-card db-today">
+          <div class="db-today__header">
+            <div>
+              <div class="db-today__title">Today's Progress</div>
+              <div class="db-today__plan">{{ ts.dietPlanName }}</div>
+            </div>
+            <button class="db-btn-sm" (click)="goToDailyIntake()">Log meals →</button>
+          </div>
+
+          <div class="db-today__summary">
+            <span class="db-today__count">{{ ts.completedSlots }} of {{ ts.totalSlots }} meals completed</span>
+            <span class="db-today__pct">{{ ts.progressPercent }}%</span>
+          </div>
+
+          <div class="db-progress-bar">
+            <div class="db-progress-bar__fill"
+                 [class.db-progress-bar__fill--done]="ts.progressPercent === 100"
+                 [style.width.%]="ts.progressPercent">
+            </div>
+          </div>
+
+          @if (ts.progressPercent === 100) {
+            <div class="db-today__all-done">✅ All meals logged for today!</div>
+          } @else {
+            <div class="db-today__remaining">{{ ts.remainingSlots }} remaining</div>
+          }
+        </section>
+      }
+
+      <!-- ── KEY STATISTICS ───────────────────────────────────────────── -->
+      @let ks = dashboard()!.keyStats;
+      <section class="db-card">
+        <h2 class="db-section-title">Key Statistics</h2>
+        <div class="db-stats-grid">
+
+          <div class="db-stat">
+            <div class="db-stat__value">{{ ks.weeklyCheckin.completedDays }}/{{ ks.weeklyCheckin.applicableDays }}</div>
+            <div class="db-stat__label">Days this week</div>
+            <div class="db-stat__sub">{{ ks.weeklyCheckin.percent }}% check-in rate</div>
+          </div>
+
+          <div class="db-stat">
+            <div class="db-stat__value">{{ ks.planFollowingPct }}%</div>
+            <div class="db-stat__label">Plan following</div>
+            <div class="db-stat__sub">of answered meals</div>
+          </div>
+
+          <div class="db-stat">
+            <div class="db-stat__value">{{ ks.mealCoveragePct }}%</div>
+            <div class="db-stat__label">Meal coverage</div>
+            <div class="db-stat__sub">slots recorded</div>
+          </div>
+
+          <div class="db-stat db-stat--warn">
+            <div class="db-stat__value">{{ ks.missingDays }}</div>
+            <div class="db-stat__label">Missing days</div>
+            <div class="db-stat__sub">incomplete logging</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── ADHERENCE CHART ──────────────────────────────────────────── -->
+      <section class="db-card">
+        <div class="db-chart-header">
+          <h2 class="db-section-title">Reported Plan Following</h2>
+          <div class="db-chart-toggle">
+            <button class="db-toggle-btn" [class.db-toggle-btn--active]="chartRange() === 7"  (click)="setChartRange(7)">7d</button>
+            <button class="db-toggle-btn" [class.db-toggle-btn--active]="chartRange() === 30" (click)="setChartRange(30)">30d</button>
+          </div>
+        </div>
+
+        @if (!hasChartData(chartPoints())) {
+          <div class="db-chart-empty">No meal data yet for this period.</div>
+        } @else {
+          <svg class="db-chart-svg" [attr.viewBox]="'0 0 ' + CHART_W + ' ' + CHART_H" aria-label="Adherence chart">
+            <!-- Grid lines -->
+            <line [attr.x1]="PAD.left" [attr.y1]="PAD.top" [attr.x2]="PAD.left" [attr.y2]="CHART_H - PAD.bottom" stroke="#e5e7eb" stroke-width="1"/>
+            <line [attr.x1]="PAD.left" [attr.y1]="CHART_H - PAD.bottom" [attr.x2]="CHART_W - PAD.right" [attr.y2]="CHART_H - PAD.bottom" stroke="#e5e7eb" stroke-width="1"/>
+            <!-- Y labels -->
+            <text [attr.x]="PAD.left - 4" [attr.y]="PAD.top + 4" text-anchor="end" font-size="9" fill="#9ca3af">100</text>
+            <text [attr.x]="PAD.left - 4" [attr.y]="PAD.top + (CHART_H - PAD.top - PAD.bottom) / 2 + 4" text-anchor="end" font-size="9" fill="#9ca3af">50</text>
+            <text [attr.x]="PAD.left - 4" [attr.y]="CHART_H - PAD.bottom + 4" text-anchor="end" font-size="9" fill="#9ca3af">0</text>
+            <!-- Area fill -->
+            <path [attr.d]="chartAreaPath(chartPoints())" fill="#ede9fe" opacity="0.5"/>
+            <!-- Line -->
+            <path [attr.d]="chartPath(chartPoints())" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <!-- Data points -->
+            @for (pt of chartDataPoints(chartPoints()); track pt.date) {
+              <circle [attr.cx]="pt.x" [attr.cy]="pt.y" r="3" fill="#4f46e5">
+                <title>{{ pt.date }}: {{ pt.followed }}/{{ pt.answered }} followed ({{ pt.pct }}%)</title>
+              </circle>
+            }
+            <!-- X axis labels -->
+            @for (lbl of chartXLabels(chartPoints()); track lbl.label) {
+              <text [attr.x]="lbl.x" [attr.y]="CHART_H - 4" text-anchor="middle" font-size="9" fill="#9ca3af">{{ lbl.label }}</text>
+            }
+          </svg>
+          <div class="db-chart-note">Percentage of answered meals where you followed the plan. Days with no logged meals are not plotted.</div>
+        }
+      </section>
+
+      <!-- ── RECENT ACTIVITY ──────────────────────────────────────────── -->
+      @if (dashboard()!.recentActivity.length > 0) {
+        <section class="db-card">
+          <h2 class="db-section-title">Recent Activity</h2>
+          <div class="db-activity-list">
+            @for (day of dashboard()!.recentActivity; track day.date) {
+              <div class="db-activity-row" (click)="goToDate(day.date)" role="button" tabindex="0" (keydown.enter)="goToDate(day.date)">
+                <div class="db-activity-row__date">{{ formatDate(day.date) }}</div>
+                <div class="db-activity-row__meals">{{ day.completedMeals }}/{{ day.totalMeals }} meals</div>
+                @if (day.adherencePct !== null) {
+                  <div class="db-activity-row__adh">{{ day.adherencePct }}% followed</div>
+                }
+                <span class="db-pill" [class]="statusClass(day.status)">{{ statusLabel(day.status) }}</span>
+              </div>
+            }
+          </div>
+        </section>
+      }
+
+      <!-- ── NAV CARDS ─────────────────────────────────────────────────── -->
+      <div class="db-nav-grid">
+        <div class="db-nav-card" (click)="goToDailyIntake()">
+          <span class="db-nav-card__icon">📋</span>
+          <div class="db-nav-card__text">
+            <span class="db-nav-card__title">Daily Intake</span>
+            <span class="db-nav-card__sub">Log today's meals</span>
+          </div>
+        </div>
+        <div class="db-nav-card" (click)="goToDietPlans()">
+          <span class="db-nav-card__icon">🥗</span>
+          <div class="db-nav-card__text">
+            <span class="db-nav-card__title">Diet Plans</span>
+            <span class="db-nav-card__sub">Manage your plans</span>
+          </div>
+        </div>
+        <div class="db-nav-card" (click)="goToSettings()">
+          <span class="db-nav-card__icon">⚙️</span>
+          <div class="db-nav-card__text">
+            <span class="db-nav-card__title">Settings</span>
+            <span class="db-nav-card__sub">Reminders & timezone</span>
+          </div>
+        </div>
+      </div>
+
+    }
+  </main>
+</div>

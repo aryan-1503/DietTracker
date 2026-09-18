@@ -20,6 +20,7 @@ export interface DietPlanDto {
   name: string;
   isActive: boolean;
   isPrimary: boolean;
+  startDate: string | null;   // YYYY-MM-DD or null
   createdAt: string;
   updatedAt: string;
   mealSlots: MealSlotDto[];
@@ -30,6 +31,7 @@ export interface DietPlanSummaryDto {
   name: string;
   isActive: boolean;
   isPrimary: boolean;
+  startDate: string | null;   // YYYY-MM-DD or null
   mealSlotCount: number;
   createdAt: string;
   updatedAt: string;
@@ -53,12 +55,14 @@ export interface MealSlotRequest {
 export interface CreateDietPlanRequest {
   name: string;
   isPrimary: boolean;
+  startDate: string | null;   // YYYY-MM-DD or null
   mealSlots: MealSlotRequest[];
 }
 
 export interface UpdateDietPlanRequest {
   name: string;
   isPrimary: boolean;
+  startDate: string | null;   // YYYY-MM-DD or null
   mealSlots: MealSlotRequest[];
 }
 
