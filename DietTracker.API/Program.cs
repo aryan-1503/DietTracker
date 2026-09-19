@@ -4,6 +4,25 @@ using DietTracker.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+// ── Load .env File (Local Dev) ────────────────────────────────────────────────
+var envFilePath = Path.Combine(Directory.GetCurrentDirectory(), ".env");
+if (File.Exists(envFilePath))
+{
+    foreach (var line in File.ReadAllLines(envFilePath))
+    {
+        var trimmed = line.Trim();
+        if (string.IsNullOrWhiteSpace(trimmed) || trimmed.StartsWith("#"))
+            continue;
+
+        var parts = trimmed.Split('=', 2);
+        if (parts.Length == 2)
+        {
+            var key = parts[0].Trim();
+            var val = parts[1].Trim().Trim('"', '\'');
+            Environment.SetEnvironmentVariable(key, val);
+        }
+    }
+}
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,8 +59,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular", policy =>
     {
-        policy.WithOrigins(
-                builder.Configuration.GetValue<string>("AllowedOrigins") ?? "http://localhost:4200")
+        var rawOrigins = builder.Configuration.GetValue<string>("AllowedOrigins") ?? "http://localhost:4200";
+        var origins = rawOrigins
+            .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+        policy.WithOrigins(origins)
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -59,16 +81,16 @@ builder.Services.AddOpenApi();
 var app = builder.Build();
 
 // ── Middleware ────────────────────────────────────────────────────────────────
-if (app.Environment.IsDevelopment())
-{
-    // OpenAPI JSON available at: /openapi/v1.json
-    app.MapOpenApi();
-}
+// OpenAPI JSON available at: /openapi/v1.json
+app.MapOpenApi();
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAngular");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+// Health check endpoint for Azure App Service pinging & testing
+app.MapGet("/", () => Results.Ok(new { status = "Healthy", message = "DietTracker API is running" }));
 
 app.Run();

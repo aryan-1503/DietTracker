@@ -6,6 +6,9 @@ obj/
 .vs/
 .kiro
 appsettings.Development.json
+.env
+*.env
+!.env.example
 
 # Angular
 DietTracker.Web/node_modules/
