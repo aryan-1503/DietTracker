@@ -7,8 +7,9 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: 'your-app-service-name' # Set this to your Azure Web App name
+  AZURE_WEBAPP_NAME: 'eat-track' # Set this to your Azure Web App name
   DOTNET_VERSION: '10.0.x' # Or adjust to your .NET SDK version (e.g. 9.0.x / 8.0.x)
+  PROJECT_PATH: 'DietTracker.API/DietTracker.API.csproj'
 
 jobs:
   build-and-deploy:
