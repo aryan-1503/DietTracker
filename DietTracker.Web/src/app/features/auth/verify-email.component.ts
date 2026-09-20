@@ -49,7 +49,7 @@ import { environment } from '../../../environments/environment';
         </form>
 
         <!-- Dev-only hint block: shows the raw token so you can test without SMTP -->
-        <div class="dev-hint" *ngIf="devToken()">
+        <div class="dev-hint" *ngIf="!isProduction && devToken()">
           <p>🛠 Dev — verification token (remove in production):</p>
           <code (click)="copyToken()">{{ devToken() }}</code>
           <span class="copied-badge" *ngIf="copied()">✓ Copied</span>
@@ -66,6 +66,7 @@ export class VerifyEmailComponent implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
+  readonly isProduction = environment.production;
   readonly loading = signal(false);
   readonly errorMessage = signal('');
   readonly devToken = signal('');
@@ -94,12 +95,14 @@ export class VerifyEmailComponent implements OnInit {
     }
 
     // Dev only: fetch token so you can test without an email server
-    this.http
-      .get<{ token: string }>(`${environment.apiUrl}/auth/dev/verification-token`)
-      .subscribe({
-        next: (res) => this.devToken.set(res.token ?? ''),
-        error: () => { /* not available in production */ },
-      });
+    if (!environment.production) {
+      this.http
+        .get<{ token: string }>(`${environment.apiUrl}/auth/dev/verification-token`)
+        .subscribe({
+          next: (res) => this.devToken.set(res.token ?? ''),
+          error: () => { /* not available in production */ },
+        });
+    }
   }
 
   isInvalid(field: string): boolean {
