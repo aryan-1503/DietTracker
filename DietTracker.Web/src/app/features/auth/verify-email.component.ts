@@ -13,7 +13,7 @@ import { environment } from '../../../environments/environment';
   template: `
     <div class="auth-container">
       <div class="auth-card">
-        <div class="auth-logo">📧</div>
+        <div class="auth-logo"><img src="/logo.png" alt="EatTrack Logo" /></div>
         <h1>Check your email</h1>
         <p class="subtitle">
           We sent a verification token to

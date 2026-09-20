@@ -23,7 +23,7 @@ function passwordMatchValidator(group: AbstractControl): ValidationErrors | null
   template: `
     <div class="auth-container">
       <div class="auth-card">
-        <div class="auth-logo">🥗</div>
+        <div class="auth-logo"><img src="/logo.png" alt="EatTrack Logo" /></div>
         <h1>Create account</h1>
         <p class="subtitle">Start your diet journey today</p>
 

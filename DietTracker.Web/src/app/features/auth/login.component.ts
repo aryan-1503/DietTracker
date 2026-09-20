@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
   template: `
     <div class="auth-container">
       <div class="auth-card">
-        <div class="auth-logo">🥗</div>
+        <div class="auth-logo"><img src="/logo.png" alt="EatTrack Logo" /></div>
         <h1>Welcome back</h1>
         <p class="subtitle">Sign in to {{ appName }}</p>
 
