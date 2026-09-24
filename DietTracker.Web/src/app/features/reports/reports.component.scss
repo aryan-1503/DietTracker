@@ -1,0 +1,176 @@
+$purple:       #4f46e5;
+$gray-50:      #f9fafb;
+$gray-100:     #f3f4f6;
+$gray-200:     #e5e7eb;
+$gray-400:     #9ca3af;
+$gray-600:     #4b5563;
+$gray-900:     #111827;
+$orange:       #ea580c;
+$red:          #dc2626;
+$font:         -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+// ── Layout ────────────────────────────────────────────────────────────────────
+
+.rp-layout {
+  min-height: 100dvh;
+  background: $gray-50;
+  display: flex;
+  flex-direction: column;
+  font-family: $font;
+}
+
+.rp-topbar {
+  background: #fff;
+  border-bottom: 1px solid $gray-200;
+  padding: 0 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  &__back {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    color: $gray-600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover { background: $gray-100; }
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: $gray-900;
+    flex: 1;
+  }
+}
+
+.rp-content {
+  flex: 1;
+  padding: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+
+.rp-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid $gray-200;
+  padding: 16px;
+  margin-bottom: 16px;
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $gray-600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  &--info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+// ── Select ────────────────────────────────────────────────────────────────────
+
+.rp-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid $gray-200;
+  border-radius: 8px;
+  font-size: 15px;
+  color: $gray-900;
+  background: #fff;
+  cursor: pointer;
+  appearance: auto;
+  font-family: $font;
+  &:focus { outline: none; border-color: $purple; box-shadow: 0 0 0 3px rgba(79,70,229,.12); }
+}
+
+// ── Info rows ─────────────────────────────────────────────────────────────────
+
+.rp-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.rp-info-label {
+  font-size: 13px;
+  color: $gray-400;
+  flex-shrink: 0;
+}
+
+.rp-info-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: $gray-900;
+  text-align: right;
+}
+
+// ── Notice ────────────────────────────────────────────────────────────────────
+
+.rp-notice {
+  font-size: 13px;
+  color: $orange;
+  background: #fff7ed;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+// ── Download button ───────────────────────────────────────────────────────────
+
+.rp-btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  background: $purple;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: $font;
+  transition: background 0.15s;
+
+  &:hover:not(:disabled) { background: #4338ca; }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+// ── States ────────────────────────────────────────────────────────────────────
+
+.rp-loading {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 14px;
+  color: $gray-400;
+}
+
+.rp-error {
+  font-size: 13px;
+  color: $red;
+  background: #fee2e2;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}

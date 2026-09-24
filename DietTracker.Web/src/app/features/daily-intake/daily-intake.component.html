@@ -115,30 +115,42 @@
             @let state = getFormState(slot.mealSlotId)!;
             <div class="di-form">
 
-              <!-- Followed plan checkbox -->
-              <label class="di-checkbox-row">
-                <input type="checkbox"
-                       [checked]="state.followedPlan"
-                       (change)="updateFormState(slot.mealSlotId, { followedPlan: $any($event.target).checked })"/>
-                <span>Followed according to plan</span>
-              </label>
-
-              <!-- Actual time -->
-              <div class="field">
-                <label>Actual consumption time</label>
-                <input type="time"
-                       [value]="state.actualTime"
-                       (change)="updateFormState(slot.mealSlotId, { actualTime: $any($event.target).value })"/>
+              <!-- Followed plan radio buttons -->
+              <div class="di-radio-group">
+                <label class="di-radio-row">
+                  <input type="radio"
+                         name="followedPlan_{{ slot.mealSlotId }}"
+                         [checked]="state.followedPlan"
+                         (change)="updateFormState(slot.mealSlotId, { followedPlan: true })"/>
+                  <span>Followed the meal</span>
+                </label>
+                <label class="di-radio-row">
+                  <input type="radio"
+                         name="followedPlan_{{ slot.mealSlotId }}"
+                         [checked]="!state.followedPlan"
+                         (change)="updateFormState(slot.mealSlotId, { followedPlan: false })"/>
+                  <span>Not followed the meal</span>
+                </label>
               </div>
 
-              <!-- Food item dropdown -->
+              <!-- Show meal details only when followed -->
               @if (state.followedPlan) {
+
+                <!-- Actual time -->
+                <div class="field">
+                  <label>Actual consumption time</label>
+                  <input type="time"
+                         [value]="state.actualTime"
+                         (change)="updateFormState(slot.mealSlotId, { actualTime: $any($event.target).value })"/>
+                </div>
+
+                <!-- Food item dropdown — uses ngModel to reliably patch after save -->
                 <div class="field">
                   <label>Food item consumed</label>
-                  <select [value]="state.foodOptionId ?? ''"
-                          (change)="updateFormState(slot.mealSlotId, {
-                            foodOptionId: $any($event.target).value === '' ? null
-                                          : +$any($event.target).value })">
+                  <select
+                    [ngModel]="state.foodOptionId ?? ''"
+                    (ngModelChange)="updateFormState(slot.mealSlotId, {
+                      foodOptionId: $event === '' ? null : +$event })">
                     <option value="">— Select a food item —</option>
                     @for (fo of slot.foodOptions; track fo.id) {
                       <option [value]="fo.id">{{ fo.name }}</option>
@@ -171,7 +183,8 @@
                     <span>Add this item to my meal options</span>
                   </label>
                 }
-              }
+
+              } <!-- end @if followedPlan -->
 
               <!-- Inline error -->
               @if (state.error) {
@@ -196,8 +209,41 @@
           }
 
         </div>
-      }
-    }
+
+      } <!-- end @for slots -->
+
+      <!-- Daily Intake Note -->
+      <div class="di-note-section">
+        <div class="di-note-section__label">Today's Intake Note</div>
+        <textarea
+          class="di-note-section__textarea"
+          [value]="dailyNote()"
+          (input)="dailyNote.set($any($event.target).value)"
+          placeholder="Enter any additional information about today's intake…"
+          rows="3"
+          [attr.maxlength]="NOTE_MAX_CHARS">
+        </textarea>
+        <div class="di-note-section__meta">
+          <span class="di-note-chars"
+                [class.di-note-chars--warn]="noteCharsLeft() <= 100"
+                [class.di-note-chars--over]="noteCharsLeft() < 0">
+            {{ noteCharsLeft() }} characters left
+          </span>
+        </div>
+        @if (dailyNoteError()) {
+          <div class="di-note-error">{{ dailyNoteError() }}</div>
+        }
+        @if (dailyNoteSaved()) {
+          <div class="di-note-saved">✓ Note saved</div>
+        }
+        <button class="di-note-section__save"
+                (click)="saveNote()"
+                [disabled]="dailyNoteSaving()">
+          {{ dailyNoteSaving() ? 'Saving…' : 'Save Note' }}
+        </button>
+      </div>
+
+    } <!-- end @else if intake() -->
 
   </div>
 </div>

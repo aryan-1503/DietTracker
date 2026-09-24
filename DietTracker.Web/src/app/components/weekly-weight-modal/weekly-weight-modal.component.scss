@@ -1,0 +1,174 @@
+.ww-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.ww-modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: ww-fade-in 0.2s ease-out;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__icon {
+    font-size: 1.5rem;
+  }
+
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 1.25rem;
+  }
+
+  &__field {
+    margin-bottom: 1rem;
+  }
+
+  &__label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.4rem;
+  }
+
+  &__input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__input {
+    flex: 1;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    padding: 0.55rem 0.75rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.15s;
+
+    &:focus {
+      border-color: #4f46e5;
+    }
+
+    &:disabled {
+      background: #f9fafb;
+      cursor: not-allowed;
+    }
+  }
+
+  &__unit {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    font-weight: 500;
+  }
+
+  &__validation {
+    font-size: 0.78rem;
+    color: #dc2626;
+    margin-top: 0.3rem;
+  }
+
+  &__error {
+    font-size: 0.82rem;
+    color: #dc2626;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-direction: column;
+  }
+}
+
+.ww-btn {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s, opacity 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--primary {
+    background: #4f46e5;
+    color: #fff;
+
+    &:not(:disabled):hover {
+      background: #4338ca;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: #6b7280;
+    border: 1.5px solid #e5e7eb;
+
+    &:not(:disabled):hover {
+      background: #f9fafb;
+    }
+  }
+
+  &__spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: ww-spin 0.7s linear infinite;
+  }
+}
+
+@keyframes ww-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ww-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

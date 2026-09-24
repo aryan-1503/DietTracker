@@ -5,7 +5,9 @@ import { environment } from '../../environments/environment';
 import {
   DailyIntakeResponse,
   DailyEntryDto,
+  DailyNoteDto,
   UpsertDailyEntryRequest,
+  UpsertDailyNoteRequest,
   UserSettingsDto,
   UpdateUserSettingsRequest,
 } from '../models/daily-intake.models';
@@ -35,6 +37,11 @@ export class DailyIntakeService {
   /** Delete a daily entry by id. */
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.base}/${id}`);
+  }
+
+  /** Upsert a daily note (PUT); empty noteText clears it (204). */
+  upsertNote(dto: UpsertDailyNoteRequest): Observable<DailyNoteDto | null> {
+    return this.http.put<DailyNoteDto>(`${this.base}/note`, dto);
   }
 
   // ── Settings ────────────────────────────────────────────────────────────────

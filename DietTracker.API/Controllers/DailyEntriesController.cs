@@ -152,6 +152,57 @@ public class DailyEntriesController : ControllerBase
         return NoContent();
     }
 
+    // GET /api/daily-entries/note?date=YYYY-MM-DD
+    [HttpGet("note")]
+    public async Task<IActionResult> GetNote([FromQuery] DateOnly date)
+    {
+        var userId = GetCurrentUserId();
+        if (userId is null) return Unauthorized();
+
+        var note = await _db.DailyNotes
+            .FirstOrDefaultAsync(dn => dn.UserId == userId && dn.EntryDate == date);
+
+        if (note is null) return NoContent();
+        return Ok(MapNoteToDto(note));
+    }
+
+    // PUT /api/daily-entries/note  — upsert; empty NoteText deletes/clears
+    [HttpPut("note")]
+    public async Task<IActionResult> UpsertNote([FromBody] UpsertDailyNoteRequest dto)
+    {
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        var userId = GetCurrentUserId();
+        if (userId is null) return Unauthorized();
+
+        var existing = await _db.DailyNotes
+            .FirstOrDefaultAsync(dn => dn.UserId == userId && dn.EntryDate == dto.EntryDate);
+
+        var isEmpty = string.IsNullOrWhiteSpace(dto.NoteText);
+
+        if (isEmpty)
+        {
+            if (existing != null)
+            {
+                _db.DailyNotes.Remove(existing);
+                await _db.SaveChangesAsync();
+            }
+            return NoContent();
+        }
+
+        if (existing is null)
+        {
+            existing = new Models.DailyNote { UserId = userId.Value, EntryDate = dto.EntryDate };
+            _db.DailyNotes.Add(existing);
+        }
+
+        existing.NoteText  = dto.NoteText!.Trim();
+        existing.UpdatedAt = DateTime.UtcNow;
+        await _db.SaveChangesAsync();
+
+        return Ok(MapNoteToDto(existing));
+    }
+
     // ── Private helpers ───────────────────────────────────────────────────────
 
     private async Task<IActionResult> GetIntakeForDate(int userId, DateOnly date)
@@ -175,6 +226,10 @@ public class DailyEntriesController : ControllerBase
 
         var entryBySlot = entries.ToDictionary(e => e.MealSlotId);
 
+        // Load daily note for the date
+        var dailyNote = await _db.DailyNotes
+            .FirstOrDefaultAsync(dn => dn.UserId == userId && dn.EntryDate == date);
+
         var result = new DailyIntakeDto
         {
             DietPlanId   = primaryPlan.Id,
@@ -196,6 +251,7 @@ public class DailyEntriesController : ControllerBase
                 }).ToList(),
                 Entry = entryBySlot.TryGetValue(ms.Id, out var e) ? MapEntryToDto(e) : null,
             }).ToList(),
+            DailyNote = dailyNote != null ? MapNoteToDto(dailyNote) : null,
         };
 
         return Ok(new { hasPrimaryPlan = true, data = result });
@@ -221,5 +277,15 @@ public class DailyEntriesController : ControllerBase
         OtherText    = e.OtherText,
         CreatedAt    = e.CreatedAt,
         UpdatedAt    = e.UpdatedAt,
+    };
+
+    private static DailyNoteDto MapNoteToDto(Models.DailyNote n) => new()
+    {
+        Id        = n.Id,
+        UserId    = n.UserId,
+        EntryDate = n.EntryDate,
+        NoteText  = n.NoteText,
+        CreatedAt = n.CreatedAt,
+        UpdatedAt = n.UpdatedAt,
     };
 }

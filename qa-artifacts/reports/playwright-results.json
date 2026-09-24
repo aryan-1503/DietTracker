@@ -1,0 +1,1336 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.config.ts"
+    ],
+    "configFile": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\playwright.config.ts",
+    "rootDir": "C:/Users/Aryan/Codes/PersonalProjects/DietTracker/qa-artifacts/test-cases",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Aryan/Codes/PersonalProjects/DietTracker/qa-artifacts/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/Aryan/Codes/PersonalProjects/DietTracker/qa-artifacts/test-cases",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/playwright-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "weekly-weight.spec.ts",
+      "file": "weekly-weight.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Weekly Weight Tracking Feature — Cycle 2",
+          "file": "weekly-weight.spec.ts",
+          "line": 56,
+          "column": 6,
+          "specs": [
+            {
+              "title": "QA-7: JWT token expiry is 7 days (604800 seconds)",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 126,
+                      "error": {
+                        "message": "Error: Login should succeed and return a token\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m",
+                        "stack": "Error: Login should succeed and return a token\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:61:66",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 66,
+                          "line": 61
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 59 |\u001b[39m   test(\u001b[32m'QA-7: JWT token expiry is 7 days (604800 seconds)'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ request }) \u001b[33m=>\u001b[39m {\n \u001b[90m 60 |\u001b[39m     \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m loginViaApi(request)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m     expect(token\u001b[33m,\u001b[39m \u001b[32m'Login should succeed and return a token'\u001b[39m)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeNull()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m\n \u001b[90m 63 |\u001b[39m     \u001b[36mconst\u001b[39m payload \u001b[33m=\u001b[39m decodeJwtPayload(token\u001b[33m!\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 64 |\u001b[39m     expect(payload\u001b[33m.\u001b[39mexp\u001b[33m,\u001b[39m \u001b[32m'exp claim must exist'\u001b[39m)\u001b[33m.\u001b[39mtoBeTruthy()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 66,
+                            "line": 61
+                          },
+                          "message": "Error: Login should succeed and return a token\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n\n  59 |   test('QA-7: JWT token expiry is 7 days (604800 seconds)', async ({ request }) => {\n  60 |     const token = await loginViaApi(request);\n> 61 |     expect(token, 'Login should succeed and return a token').not.toBeNull();\n     |                                                                  ^\n  62 |\n  63 |     const payload = decodeJwtPayload(token!);\n  64 |     expect(payload.exp, 'exp claim must exist').toBeTruthy();\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:61:66"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "loginViaApi error: apiRequestContext.post: connect ECONNREFUSED ::1:7164\nconnect ECONNREFUSED 127.0.0.1:7164\nCall log:\n\u001b[2m  - → POST https://localhost:7164/api/auth/login\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - content-length: 47\u001b[22m\n\n    at loginViaApi \u001b[90m(C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:26:32\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:60:25 {\n  log: [\n    \u001b[32m'  - → POST https://localhost:7164/api/auth/login'\u001b[39m,\n    \u001b[32m'    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14'\u001b[39m,\n    \u001b[32m'    - accept: */*'\u001b[39m,\n    \u001b[32m'    - accept-encoding: gzip,deflate,br'\u001b[39m,\n    \u001b[32m'    - content-type: application/json'\u001b[39m,\n    \u001b[32m'    - content-length: 47'\u001b[39m\n  ],\n  name: \u001b[32m'AggregateError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts'\u001b[39m,\n      line: \u001b[33m26\u001b[39m,\n      column: \u001b[33m32\u001b[39m,\n      function: \u001b[32m'loginViaApi'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m'POST'\u001b[39m,\n    subtitle: \u001b[32m'localhost:7164/api/auth/login'\u001b[39m,\n    params: { url: \u001b[32m'https://localhost:7164/api/auth/login'\u001b[39m, method: \u001b[32m'POST'\u001b[39m },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@33'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@33'\u001b[39m,\n      _title: \u001b[32m'POST'\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1790263489945\u001b[39m,\n    error: {\n      message: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'    at loginViaApi (C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:26:32)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:60:25'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:24:49.775Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-aa360-y-is-7-days-604800-seconds-\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 66,
+                        "line": 61
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-13df827c89975cc5cd0d",
+              "file": "weekly-weight.spec.ts",
+              "line": 59,
+              "column": 7
+            },
+            {
+              "title": "AC-11: appsettings.json has ExpiryHours = 168",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 7,
+                      "error": {
+                        "message": "Error: ENOENT: no such file or directory, open 'C:\\Users\\Aryan\\Codes\\DietTracker.API\\appsettings.json'",
+                        "stack": "Error: ENOENT: no such file or directory, open 'C:\\Users\\Aryan\\Codes\\DietTracker.API\\appsettings.json'\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:80:36",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 36,
+                          "line": 80
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 78 |\u001b[39m       \u001b[32m'../../../../DietTracker.API/appsettings.json'\u001b[39m\n \u001b[90m 79 |\u001b[39m     )\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 80 |\u001b[39m     \u001b[36mconst\u001b[39m settings \u001b[33m=\u001b[39m \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mparse(fs\u001b[33m.\u001b[39mreadFileSync(settingsPath\u001b[33m,\u001b[39m \u001b[32m'utf8'\u001b[39m))\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 81 |\u001b[39m     expect(settings\u001b[33m.\u001b[39m\u001b[33mJwtSettings\u001b[39m\u001b[33m?\u001b[39m\u001b[33m.\u001b[39m\u001b[33mExpiryHours\u001b[39m)\u001b[33m.\u001b[39mtoBe(\u001b[32m'168'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 82 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 83 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 36,
+                            "line": 80
+                          },
+                          "message": "Error: ENOENT: no such file or directory, open 'C:\\Users\\Aryan\\Codes\\DietTracker.API\\appsettings.json'\n\n  78 |       '../../../../DietTracker.API/appsettings.json'\n  79 |     );\n> 80 |     const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));\n     |                                    ^\n  81 |     expect(settings.JwtSettings?.ExpiryHours).toBe('168');\n  82 |   });\n  83 |\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:80:36"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:24:51.060Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-c6684-gs-json-has-ExpiryHours-168\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 36,
+                        "line": 80
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-dad556a999896d15f2cc",
+              "file": "weekly-weight.spec.ts",
+              "line": 75,
+              "column": 7
+            },
+            {
+              "title": "QA-4 (UI): Login, popup appears, enter valid weight, Save → popup closes, chart updates",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16248,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:89:5",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 14,
+                          "line": 45
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 43 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[type=\"password\"], input[name=\"password\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[33mTEST_USER\u001b[39m\u001b[33m.\u001b[39mpassword)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button[type=\"submit\"]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[35m/dashboard/\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m }\n \u001b[90m 47 |\u001b[39m\n \u001b[90m 48 |\u001b[39m \u001b[36mfunction\u001b[39m decodeJwtPayload(token\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mRecord\u001b[39m\u001b[33m<\u001b[39m\u001b[33mstring\u001b[39m\u001b[33m,\u001b[39m number\u001b[33m>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 14,
+                            "line": 45
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n  43 |   await page.fill('input[type=\"password\"], input[name=\"password\"]', TEST_USER.password);\n  44 |   await page.click('button[type=\"submit\"]');\n> 45 |   await page.waitForURL(/dashboard/, { timeout: 15000 });\n     |              ^\n  46 | }\n  47 |\n  48 | function decodeJwtPayload(token: string): Record<string, number> {\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:89:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:24:52.188Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-27a18--popup-closes-chart-updates\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-27a18--popup-closes-chart-updates\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 14,
+                        "line": 45
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-1f3e3a382b80988393e8",
+              "file": "weekly-weight.spec.ts",
+              "line": 85,
+              "column": 7
+            },
+            {
+              "title": "QA-5: After weight saved, reload app → popup does NOT reappear",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16201,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:149:5",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 14,
+                          "line": 45
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 43 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[type=\"password\"], input[name=\"password\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[33mTEST_USER\u001b[39m\u001b[33m.\u001b[39mpassword)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button[type=\"submit\"]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[35m/dashboard/\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m }\n \u001b[90m 47 |\u001b[39m\n \u001b[90m 48 |\u001b[39m \u001b[36mfunction\u001b[39m decodeJwtPayload(token\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mRecord\u001b[39m\u001b[33m<\u001b[39m\u001b[33mstring\u001b[39m\u001b[33m,\u001b[39m number\u001b[33m>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 14,
+                            "line": 45
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n  43 |   await page.fill('input[type=\"password\"], input[name=\"password\"]', TEST_USER.password);\n  44 |   await page.click('button[type=\"submit\"]');\n> 45 |   await page.waitForURL(/dashboard/, { timeout: 15000 });\n     |              ^\n  46 | }\n  47 |\n  48 | function decodeJwtPayload(token: string): Record<string, number> {\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:149:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:25:09.911Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-bab00-p-→-popup-does-NOT-reappear\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-bab00-p-→-popup-does-NOT-reappear\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 14,
+                        "line": 45
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-f21381685c2aa2be3825",
+              "file": "weekly-weight.spec.ts",
+              "line": 148,
+              "column": 7
+            },
+            {
+              "title": "QA-3: \"Enter Later\" dismisses popup; new navigation re-opens it if entry still missing",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16170,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:178:5",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 14,
+                          "line": 45
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 43 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[type=\"password\"], input[name=\"password\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[33mTEST_USER\u001b[39m\u001b[33m.\u001b[39mpassword)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button[type=\"submit\"]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[35m/dashboard/\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m }\n \u001b[90m 47 |\u001b[39m\n \u001b[90m 48 |\u001b[39m \u001b[36mfunction\u001b[39m decodeJwtPayload(token\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mRecord\u001b[39m\u001b[33m<\u001b[39m\u001b[33mstring\u001b[39m\u001b[33m,\u001b[39m number\u001b[33m>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 14,
+                            "line": 45
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n  43 |   await page.fill('input[type=\"password\"], input[name=\"password\"]', TEST_USER.password);\n  44 |   await page.click('button[type=\"submit\"]');\n> 45 |   await page.waitForURL(/dashboard/, { timeout: 15000 });\n     |              ^\n  46 | }\n  47 |\n  48 | function decodeJwtPayload(token: string): Record<string, number> {\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:178:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:25:27.430Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-45723-s-it-if-entry-still-missing\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-45723-s-it-if-entry-still-missing\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 14,
+                        "line": 45
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-b2fa065ec3ac01b6c16f",
+              "file": "weekly-weight.spec.ts",
+              "line": 177,
+              "column": 7
+            },
+            {
+              "title": "QA-9: Weight < 20 kg disables Save button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16199,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:212:5",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 14,
+                          "line": 45
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 43 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[type=\"password\"], input[name=\"password\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[33mTEST_USER\u001b[39m\u001b[33m.\u001b[39mpassword)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button[type=\"submit\"]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[35m/dashboard/\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m }\n \u001b[90m 47 |\u001b[39m\n \u001b[90m 48 |\u001b[39m \u001b[36mfunction\u001b[39m decodeJwtPayload(token\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mRecord\u001b[39m\u001b[33m<\u001b[39m\u001b[33mstring\u001b[39m\u001b[33m,\u001b[39m number\u001b[33m>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 14,
+                            "line": 45
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n  43 |   await page.fill('input[type=\"password\"], input[name=\"password\"]', TEST_USER.password);\n  44 |   await page.click('button[type=\"submit\"]');\n> 45 |   await page.waitForURL(/dashboard/, { timeout: 15000 });\n     |              ^\n  46 | }\n  47 |\n  48 | function decodeJwtPayload(token: string): Record<string, number> {\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:212:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:25:44.918Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-4ebcb--20-kg-disables-Save-button\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-4ebcb--20-kg-disables-Save-button\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 14,
+                        "line": 45
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-0c0f864671fbb019e40a",
+              "file": "weekly-weight.spec.ts",
+              "line": 211,
+              "column": 7
+            },
+            {
+              "title": "QA-10: Weight > 300 kg disables Save button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16189,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:239:5",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 14,
+                          "line": 45
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 43 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[type=\"password\"], input[name=\"password\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[33mTEST_USER\u001b[39m\u001b[33m.\u001b[39mpassword)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button[type=\"submit\"]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[35m/dashboard/\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m }\n \u001b[90m 47 |\u001b[39m\n \u001b[90m 48 |\u001b[39m \u001b[36mfunction\u001b[39m decodeJwtPayload(token\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mRecord\u001b[39m\u001b[33m<\u001b[39m\u001b[33mstring\u001b[39m\u001b[33m,\u001b[39m number\u001b[33m>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 14,
+                            "line": 45
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n  43 |   await page.fill('input[type=\"password\"], input[name=\"password\"]', TEST_USER.password);\n  44 |   await page.click('button[type=\"submit\"]');\n> 45 |   await page.waitForURL(/dashboard/, { timeout: 15000 });\n     |              ^\n  46 | }\n  47 |\n  48 | function decodeJwtPayload(token: string): Record<string, number> {\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:239:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:02.427Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-d5ce4-300-kg-disables-Save-button\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-d5ce4-300-kg-disables-Save-button\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 14,
+                        "line": 45
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-28f72379cb7d0671dba2",
+              "file": "weekly-weight.spec.ts",
+              "line": 238,
+              "column": 7
+            },
+            {
+              "title": "QA-11: Non-numeric input (abc) disables Save button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16176,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:265:5",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 14,
+                          "line": 45
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 43 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[type=\"password\"], input[name=\"password\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[33mTEST_USER\u001b[39m\u001b[33m.\u001b[39mpassword)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button[type=\"submit\"]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[35m/dashboard/\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m }\n \u001b[90m 47 |\u001b[39m\n \u001b[90m 48 |\u001b[39m \u001b[36mfunction\u001b[39m decodeJwtPayload(token\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mRecord\u001b[39m\u001b[33m<\u001b[39m\u001b[33mstring\u001b[39m\u001b[33m,\u001b[39m number\u001b[33m>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 14,
+                            "line": 45
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n  43 |   await page.fill('input[type=\"password\"], input[name=\"password\"]', TEST_USER.password);\n  44 |   await page.click('button[type=\"submit\"]');\n> 45 |   await page.waitForURL(/dashboard/, { timeout: 15000 });\n     |              ^\n  46 | }\n  47 |\n  48 | function decodeJwtPayload(token: string): Record<string, number> {\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:265:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:19.936Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-53265-ut-abc-disables-Save-button\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-53265-ut-abc-disables-Save-button\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 14,
+                        "line": 45
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-de9e38ddb781fd319fe3",
+              "file": "weekly-weight.spec.ts",
+              "line": 264,
+              "column": 7
+            },
+            {
+              "title": "QA-8 (API): Duplicate weight entry returns HTTP 409",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 122,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:289:23",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 23,
+                          "line": 289
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 287 |\u001b[39m   test(\u001b[32m'QA-8 (API): Duplicate weight entry returns HTTP 409'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ request }) \u001b[33m=>\u001b[39m {\n \u001b[90m 288 |\u001b[39m     \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m loginViaApi(request)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 289 |\u001b[39m     expect(token)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeNull()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 290 |\u001b[39m\n \u001b[90m 291 |\u001b[39m     \u001b[90m// Determine current ISO week\u001b[39m\n \u001b[90m 292 |\u001b[39m     \u001b[36mconst\u001b[39m now \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mDate\u001b[39m()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 23,
+                            "line": 289
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n\n  287 |   test('QA-8 (API): Duplicate weight entry returns HTTP 409', async ({ request }) => {\n  288 |     const token = await loginViaApi(request);\n> 289 |     expect(token).not.toBeNull();\n      |                       ^\n  290 |\n  291 |     // Determine current ISO week\n  292 |     const now = new Date();\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:289:23"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "loginViaApi error: apiRequestContext.post: connect ECONNREFUSED ::1:7164\nconnect ECONNREFUSED 127.0.0.1:7164\nCall log:\n\u001b[2m  - → POST https://localhost:7164/api/auth/login\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - content-length: 47\u001b[22m\n\n    at loginViaApi \u001b[90m(C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:26:32\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:288:25 {\n  log: [\n    \u001b[32m'  - → POST https://localhost:7164/api/auth/login'\u001b[39m,\n    \u001b[32m'    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14'\u001b[39m,\n    \u001b[32m'    - accept: */*'\u001b[39m,\n    \u001b[32m'    - accept-encoding: gzip,deflate,br'\u001b[39m,\n    \u001b[32m'    - content-type: application/json'\u001b[39m,\n    \u001b[32m'    - content-length: 47'\u001b[39m\n  ],\n  name: \u001b[32m'AggregateError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts'\u001b[39m,\n      line: \u001b[33m26\u001b[39m,\n      column: \u001b[33m32\u001b[39m,\n      function: \u001b[32m'loginViaApi'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m'POST'\u001b[39m,\n    subtitle: \u001b[32m'localhost:7164/api/auth/login'\u001b[39m,\n    params: { url: \u001b[32m'https://localhost:7164/api/auth/login'\u001b[39m, method: \u001b[32m'POST'\u001b[39m },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@33'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@33'\u001b[39m,\n      _title: \u001b[32m'POST'\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1790263597591\u001b[39m,\n    error: {\n      message: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'    at loginViaApi (C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:26:32)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:288:25'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:37.441Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-d78af-ight-entry-returns-HTTP-409\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 23,
+                        "line": 289
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-5840e036e25b4ee10f7c",
+              "file": "weekly-weight.spec.ts",
+              "line": 287,
+              "column": 7
+            },
+            {
+              "title": "AC-10: Dashboard shows empty-state text when no weight entries",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 286,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "loginViaApi error: apiRequestContext.post: connect ECONNREFUSED ::1:7164\nconnect ECONNREFUSED 127.0.0.1:7164\nCall log:\n\u001b[2m  - → POST https://localhost:7164/api/auth/login\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - content-length: 47\u001b[22m\n\n    at loginViaApi \u001b[90m(C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:26:32\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:340:25 {\n  log: [\n    \u001b[32m'  - → POST https://localhost:7164/api/auth/login'\u001b[39m,\n    \u001b[32m'    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14'\u001b[39m,\n    \u001b[32m'    - accept: */*'\u001b[39m,\n    \u001b[32m'    - accept-encoding: gzip,deflate,br'\u001b[39m,\n    \u001b[32m'    - content-type: application/json'\u001b[39m,\n    \u001b[32m'    - content-length: 47'\u001b[39m\n  ],\n  name: \u001b[32m'AggregateError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts'\u001b[39m,\n      line: \u001b[33m26\u001b[39m,\n      column: \u001b[33m32\u001b[39m,\n      function: \u001b[32m'loginViaApi'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m'POST'\u001b[39m,\n    subtitle: \u001b[32m'localhost:7164/api/auth/login'\u001b[39m,\n    params: { url: \u001b[32m'https://localhost:7164/api/auth/login'\u001b[39m, method: \u001b[32m'POST'\u001b[39m },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@43'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@43'\u001b[39m,\n      _title: \u001b[32m'POST'\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1790263599083\u001b[39m,\n    error: {\n      message: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'    at loginViaApi (C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:26:32)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:340:25'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:38.683Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-e0e0343872700d922e81",
+              "file": "weekly-weight.spec.ts",
+              "line": 338,
+              "column": 7
+            },
+            {
+              "title": "QA-6 + AC-8: Weight chart x-axis labels use \"Week N\" format",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 217,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:370:23",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 23,
+                          "line": 370
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 368 |\u001b[39m   test(\u001b[32m'QA-6 + AC-8: Weight chart x-axis labels use \"Week N\" format'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page\u001b[33m,\u001b[39m request }) \u001b[33m=>\u001b[39m {\n \u001b[90m 369 |\u001b[39m     \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m loginViaApi(request)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 370 |\u001b[39m     expect(token)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeNull()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 371 |\u001b[39m\n \u001b[90m 372 |\u001b[39m     \u001b[36mconst\u001b[39m resp \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m request\u001b[33m.\u001b[39m\u001b[36mget\u001b[39m(\u001b[32m`${API_URL}/weight-entries`\u001b[39m\u001b[33m,\u001b[39m {\n \u001b[90m 373 |\u001b[39m       headers\u001b[33m:\u001b[39m { \u001b[33mAuthorization\u001b[39m\u001b[33m:\u001b[39m \u001b[32m`Bearer ${token}`\u001b[39m }\u001b[33m,\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 23,
+                            "line": 370
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n\n  368 |   test('QA-6 + AC-8: Weight chart x-axis labels use \"Week N\" format', async ({ page, request }) => {\n  369 |     const token = await loginViaApi(request);\n> 370 |     expect(token).not.toBeNull();\n      |                       ^\n  371 |\n  372 |     const resp = await request.get(`${API_URL}/weight-entries`, {\n  373 |       headers: { Authorization: `Bearer ${token}` },\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:370:23"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "loginViaApi error: apiRequestContext.post: connect ECONNREFUSED ::1:7164\nconnect ECONNREFUSED 127.0.0.1:7164\nCall log:\n\u001b[2m  - → POST https://localhost:7164/api/auth/login\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - content-length: 47\u001b[22m\n\n    at loginViaApi \u001b[90m(C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:26:32\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:369:25 {\n  log: [\n    \u001b[32m'  - → POST https://localhost:7164/api/auth/login'\u001b[39m,\n    \u001b[32m'    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14'\u001b[39m,\n    \u001b[32m'    - accept: */*'\u001b[39m,\n    \u001b[32m'    - accept-encoding: gzip,deflate,br'\u001b[39m,\n    \u001b[32m'    - content-type: application/json'\u001b[39m,\n    \u001b[32m'    - content-length: 47'\u001b[39m\n  ],\n  name: \u001b[32m'AggregateError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts'\u001b[39m,\n      line: \u001b[33m26\u001b[39m,\n      column: \u001b[33m32\u001b[39m,\n      function: \u001b[32m'loginViaApi'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m'POST'\u001b[39m,\n    subtitle: \u001b[32m'localhost:7164/api/auth/login'\u001b[39m,\n    params: { url: \u001b[32m'https://localhost:7164/api/auth/login'\u001b[39m, method: \u001b[32m'POST'\u001b[39m },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@35'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@35'\u001b[39m,\n      _title: \u001b[32m'POST'\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1790263599282\u001b[39m,\n    error: {\n      message: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'    at loginViaApi (C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:26:32)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:369:25'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:39.171Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-9944d-is-labels-use-Week-N-format\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-9944d-is-labels-use-Week-N-format\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 23,
+                        "line": 370
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-009457019e627b9ffcf3",
+              "file": "weekly-weight.spec.ts",
+              "line": 368,
+              "column": 7
+            },
+            {
+              "title": "AC-9: Weight chart uses inline SVG with no external charting library",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 287,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "loginViaApi error: apiRequestContext.post: connect ECONNREFUSED ::1:7164\nconnect ECONNREFUSED 127.0.0.1:7164\nCall log:\n\u001b[2m  - → POST https://localhost:7164/api/auth/login\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - content-length: 47\u001b[22m\n\n    at loginViaApi \u001b[90m(C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:26:32\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:400:25 {\n  log: [\n    \u001b[32m'  - → POST https://localhost:7164/api/auth/login'\u001b[39m,\n    \u001b[32m'    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14'\u001b[39m,\n    \u001b[32m'    - accept: */*'\u001b[39m,\n    \u001b[32m'    - accept-encoding: gzip,deflate,br'\u001b[39m,\n    \u001b[32m'    - content-type: application/json'\u001b[39m,\n    \u001b[32m'    - content-length: 47'\u001b[39m\n  ],\n  name: \u001b[32m'AggregateError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts'\u001b[39m,\n      line: \u001b[33m26\u001b[39m,\n      column: \u001b[33m32\u001b[39m,\n      function: \u001b[32m'loginViaApi'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m'POST'\u001b[39m,\n    subtitle: \u001b[32m'localhost:7164/api/auth/login'\u001b[39m,\n    params: { url: \u001b[32m'https://localhost:7164/api/auth/login'\u001b[39m, method: \u001b[32m'POST'\u001b[39m },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@43'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@43'\u001b[39m,\n      _title: \u001b[32m'POST'\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1790263600886\u001b[39m,\n    error: {\n      message: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'    at loginViaApi (C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:26:32)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:400:25'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:40.488Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-a086e01da19a2063fdd0",
+              "file": "weekly-weight.spec.ts",
+              "line": 399,
+              "column": 7
+            },
+            {
+              "title": "FR-3: GET /api/weight-entries/pending-check returns correct structure",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 22,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:440:23",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 23,
+                          "line": 440
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 438 |\u001b[39m   test(\u001b[32m'FR-3: GET /api/weight-entries/pending-check returns correct structure'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ request }) \u001b[33m=>\u001b[39m {\n \u001b[90m 439 |\u001b[39m     \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m loginViaApi(request)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 440 |\u001b[39m     expect(token)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeNull()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 441 |\u001b[39m\n \u001b[90m 442 |\u001b[39m     \u001b[36mconst\u001b[39m resp \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m request\u001b[33m.\u001b[39m\u001b[36mget\u001b[39m(\u001b[32m`${API_URL}/weight-entries/pending-check?tz=Asia/Kolkata`\u001b[39m\u001b[33m,\u001b[39m {\n \u001b[90m 443 |\u001b[39m       headers\u001b[33m:\u001b[39m { \u001b[33mAuthorization\u001b[39m\u001b[33m:\u001b[39m \u001b[32m`Bearer ${token}`\u001b[39m }\u001b[33m,\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 23,
+                            "line": 440
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n\n  438 |   test('FR-3: GET /api/weight-entries/pending-check returns correct structure', async ({ request }) => {\n  439 |     const token = await loginViaApi(request);\n> 440 |     expect(token).not.toBeNull();\n      |                       ^\n  441 |\n  442 |     const resp = await request.get(`${API_URL}/weight-entries/pending-check?tz=Asia/Kolkata`, {\n  443 |       headers: { Authorization: `Bearer ${token}` },\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:440:23"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "loginViaApi error: apiRequestContext.post: connect ECONNREFUSED ::1:7164\nconnect ECONNREFUSED 127.0.0.1:7164\nCall log:\n\u001b[2m  - → POST https://localhost:7164/api/auth/login\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - content-length: 47\u001b[22m\n\n    at loginViaApi \u001b[90m(C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:26:32\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:439:25 {\n  log: [\n    \u001b[32m'  - → POST https://localhost:7164/api/auth/login'\u001b[39m,\n    \u001b[32m'    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14'\u001b[39m,\n    \u001b[32m'    - accept: */*'\u001b[39m,\n    \u001b[32m'    - accept-encoding: gzip,deflate,br'\u001b[39m,\n    \u001b[32m'    - content-type: application/json'\u001b[39m,\n    \u001b[32m'    - content-length: 47'\u001b[39m\n  ],\n  name: \u001b[32m'AggregateError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts'\u001b[39m,\n      line: \u001b[33m26\u001b[39m,\n      column: \u001b[33m32\u001b[39m,\n      function: \u001b[32m'loginViaApi'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m'POST'\u001b[39m,\n    subtitle: \u001b[32m'localhost:7164/api/auth/login'\u001b[39m,\n    params: { url: \u001b[32m'https://localhost:7164/api/auth/login'\u001b[39m, method: \u001b[32m'POST'\u001b[39m },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@30'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@30'\u001b[39m,\n      _title: \u001b[32m'POST'\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1790263600998\u001b[39m,\n    error: {\n      message: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'    at loginViaApi (C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:26:32)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:439:25'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:40.974Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-1ac17-k-returns-correct-structure\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 23,
+                        "line": 440
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-b4303ec75ece775f44bf",
+              "file": "weekly-weight.spec.ts",
+              "line": 438,
+              "column": 7
+            },
+            {
+              "title": "EC-1 (API): No pending entry returned when no diet plan StartDate",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 118,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:464:23",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 23,
+                          "line": 464
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 462 |\u001b[39m     \u001b[90m// Since we test with a known user, we just verify the endpoint does not crash.\u001b[39m\n \u001b[90m 463 |\u001b[39m     \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m loginViaApi(request)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 464 |\u001b[39m     expect(token)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeNull()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 465 |\u001b[39m\n \u001b[90m 466 |\u001b[39m     \u001b[36mconst\u001b[39m resp \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m request\u001b[33m.\u001b[39m\u001b[36mget\u001b[39m(\u001b[32m`${API_URL}/weight-entries/pending-check`\u001b[39m\u001b[33m,\u001b[39m {\n \u001b[90m 467 |\u001b[39m       headers\u001b[33m:\u001b[39m { \u001b[33mAuthorization\u001b[39m\u001b[33m:\u001b[39m \u001b[32m`Bearer ${token}`\u001b[39m }\u001b[33m,\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 23,
+                            "line": 464
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n\n  462 |     // Since we test with a known user, we just verify the endpoint does not crash.\n  463 |     const token = await loginViaApi(request);\n> 464 |     expect(token).not.toBeNull();\n      |                       ^\n  465 |\n  466 |     const resp = await request.get(`${API_URL}/weight-entries/pending-check`, {\n  467 |       headers: { Authorization: `Bearer ${token}` },\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:464:23"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "loginViaApi error: apiRequestContext.post: connect ECONNREFUSED ::1:7164\nconnect ECONNREFUSED 127.0.0.1:7164\nCall log:\n\u001b[2m  - → POST https://localhost:7164/api/auth/login\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - content-length: 47\u001b[22m\n\n    at loginViaApi \u001b[90m(C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:26:32\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:463:25 {\n  log: [\n    \u001b[32m'  - → POST https://localhost:7164/api/auth/login'\u001b[39m,\n    \u001b[32m'    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14'\u001b[39m,\n    \u001b[32m'    - accept: */*'\u001b[39m,\n    \u001b[32m'    - accept-encoding: gzip,deflate,br'\u001b[39m,\n    \u001b[32m'    - content-type: application/json'\u001b[39m,\n    \u001b[32m'    - content-length: 47'\u001b[39m\n  ],\n  name: \u001b[32m'AggregateError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts'\u001b[39m,\n      line: \u001b[33m26\u001b[39m,\n      column: \u001b[33m32\u001b[39m,\n      function: \u001b[32m'loginViaApi'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m'POST'\u001b[39m,\n    subtitle: \u001b[32m'localhost:7164/api/auth/login'\u001b[39m,\n    params: { url: \u001b[32m'https://localhost:7164/api/auth/login'\u001b[39m, method: \u001b[32m'POST'\u001b[39m },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@33'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@33'\u001b[39m,\n      _title: \u001b[32m'POST'\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1790263602259\u001b[39m,\n    error: {\n      message: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'    at loginViaApi (C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:26:32)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:463:25'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:42.109Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-688d0-when-no-diet-plan-StartDate\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 23,
+                        "line": 464
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-ab088a15630b1e6ebb09",
+              "file": "weekly-weight.spec.ts",
+              "line": 459,
+              "column": 7
+            },
+            {
+              "title": "QA-16 (API): Decimal weight 72.3 kg is accepted and returned correctly",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 119,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:478:23",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 23,
+                          "line": 478
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 476 |\u001b[39m   test(\u001b[32m'QA-16 (API): Decimal weight 72.3 kg is accepted and returned correctly'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ request }) \u001b[33m=>\u001b[39m {\n \u001b[90m 477 |\u001b[39m     \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m loginViaApi(request)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 478 |\u001b[39m     expect(token)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeNull()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 479 |\u001b[39m\n \u001b[90m 480 |\u001b[39m     \u001b[36mconst\u001b[39m now \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mDate\u001b[39m()\u001b[33m;\u001b[39m\n \u001b[90m 481 |\u001b[39m     \u001b[36mconst\u001b[39m testDate \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mDate\u001b[39m(now)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 23,
+                            "line": 478
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n\n  476 |   test('QA-16 (API): Decimal weight 72.3 kg is accepted and returned correctly', async ({ request }) => {\n  477 |     const token = await loginViaApi(request);\n> 478 |     expect(token).not.toBeNull();\n      |                       ^\n  479 |\n  480 |     const now = new Date();\n  481 |     const testDate = new Date(now);\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:478:23"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "loginViaApi error: apiRequestContext.post: connect ECONNREFUSED ::1:7164\nconnect ECONNREFUSED 127.0.0.1:7164\nCall log:\n\u001b[2m  - → POST https://localhost:7164/api/auth/login\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - content-length: 47\u001b[22m\n\n    at loginViaApi \u001b[90m(C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:26:32\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:477:25 {\n  log: [\n    \u001b[32m'  - → POST https://localhost:7164/api/auth/login'\u001b[39m,\n    \u001b[32m'    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14'\u001b[39m,\n    \u001b[32m'    - accept: */*'\u001b[39m,\n    \u001b[32m'    - accept-encoding: gzip,deflate,br'\u001b[39m,\n    \u001b[32m'    - content-type: application/json'\u001b[39m,\n    \u001b[32m'    - content-length: 47'\u001b[39m\n  ],\n  name: \u001b[32m'AggregateError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts'\u001b[39m,\n      line: \u001b[33m26\u001b[39m,\n      column: \u001b[33m32\u001b[39m,\n      function: \u001b[32m'loginViaApi'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m'POST'\u001b[39m,\n    subtitle: \u001b[32m'localhost:7164/api/auth/login'\u001b[39m,\n    params: { url: \u001b[32m'https://localhost:7164/api/auth/login'\u001b[39m, method: \u001b[32m'POST'\u001b[39m },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@33'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@33'\u001b[39m,\n      _title: \u001b[32m'POST'\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1790263603523\u001b[39m,\n    error: {\n      message: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'    at loginViaApi (C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:26:32)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:477:25'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:43.370Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-3100d-pted-and-returned-correctly\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 23,
+                        "line": 478
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-7d53bdafc5d3eb43d678",
+              "file": "weekly-weight.spec.ts",
+              "line": 476,
+              "column": 7
+            },
+            {
+              "title": "FR-13 (API): Weight 0 or negative is rejected by API",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 120,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:518:23",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 23,
+                          "line": 518
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 516 |\u001b[39m   test(\u001b[32m'FR-13 (API): Weight 0 or negative is rejected by API'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ request }) \u001b[33m=>\u001b[39m {\n \u001b[90m 517 |\u001b[39m     \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m loginViaApi(request)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 518 |\u001b[39m     expect(token)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeNull()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 519 |\u001b[39m\n \u001b[90m 520 |\u001b[39m     \u001b[36mconst\u001b[39m now \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mDate\u001b[39m()\u001b[33m;\u001b[39m\n \u001b[90m 521 |\u001b[39m     \u001b[36mconst\u001b[39m getIsoWeek \u001b[33m=\u001b[39m (d\u001b[33m:\u001b[39m \u001b[33mDate\u001b[39m) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 23,
+                            "line": 518
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n\n  516 |   test('FR-13 (API): Weight 0 or negative is rejected by API', async ({ request }) => {\n  517 |     const token = await loginViaApi(request);\n> 518 |     expect(token).not.toBeNull();\n      |                       ^\n  519 |\n  520 |     const now = new Date();\n  521 |     const getIsoWeek = (d: Date) => {\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:518:23"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "loginViaApi error: apiRequestContext.post: connect ECONNREFUSED ::1:7164\nconnect ECONNREFUSED 127.0.0.1:7164\nCall log:\n\u001b[2m  - → POST https://localhost:7164/api/auth/login\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - content-length: 47\u001b[22m\n\n    at loginViaApi \u001b[90m(C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:26:32\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:517:25 {\n  log: [\n    \u001b[32m'  - → POST https://localhost:7164/api/auth/login'\u001b[39m,\n    \u001b[32m'    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14'\u001b[39m,\n    \u001b[32m'    - accept: */*'\u001b[39m,\n    \u001b[32m'    - accept-encoding: gzip,deflate,br'\u001b[39m,\n    \u001b[32m'    - content-type: application/json'\u001b[39m,\n    \u001b[32m'    - content-length: 47'\u001b[39m\n  ],\n  name: \u001b[32m'AggregateError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts'\u001b[39m,\n      line: \u001b[33m26\u001b[39m,\n      column: \u001b[33m32\u001b[39m,\n      function: \u001b[32m'loginViaApi'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m'POST'\u001b[39m,\n    subtitle: \u001b[32m'localhost:7164/api/auth/login'\u001b[39m,\n    params: { url: \u001b[32m'https://localhost:7164/api/auth/login'\u001b[39m, method: \u001b[32m'POST'\u001b[39m },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@33'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@33'\u001b[39m,\n      _title: \u001b[32m'POST'\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1790263604745\u001b[39m,\n    error: {\n      message: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'    at loginViaApi (C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:26:32)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:517:25'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:44.595Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-a466a-negative-is-rejected-by-API\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 23,
+                        "line": 518
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-cad6704a71a108f4b2f8",
+              "file": "weekly-weight.spec.ts",
+              "line": 516,
+              "column": 7
+            },
+            {
+              "title": "REGRESSION: Dashboard core sections still render correctly",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16159,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:543:5",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 14,
+                          "line": 45
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 43 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[type=\"password\"], input[name=\"password\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[33mTEST_USER\u001b[39m\u001b[33m.\u001b[39mpassword)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button[type=\"submit\"]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[35m/dashboard/\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m }\n \u001b[90m 47 |\u001b[39m\n \u001b[90m 48 |\u001b[39m \u001b[36mfunction\u001b[39m decodeJwtPayload(token\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mRecord\u001b[39m\u001b[33m<\u001b[39m\u001b[33mstring\u001b[39m\u001b[33m,\u001b[39m number\u001b[33m>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 14,
+                            "line": 45
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n  43 |   await page.fill('input[type=\"password\"], input[name=\"password\"]', TEST_USER.password);\n  44 |   await page.click('button[type=\"submit\"]');\n> 45 |   await page.waitForURL(/dashboard/, { timeout: 15000 });\n     |              ^\n  46 | }\n  47 |\n  48 | function decodeJwtPayload(token: string): Record<string, number> {\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:543:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:26:45.817Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-26085-ions-still-render-correctly\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-26085-ions-still-render-correctly\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 14,
+                        "line": 45
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-7af83cd10ba801d9c0ce",
+              "file": "weekly-weight.spec.ts",
+              "line": 542,
+              "column": 7
+            },
+            {
+              "title": "REGRESSION: Login and logout work correctly",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16161,
+                      "error": {
+                        "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================",
+                        "stack": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:565:5",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 14,
+                          "line": 45
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 43 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mfill(\u001b[32m'input[type=\"password\"], input[name=\"password\"]'\u001b[39m\u001b[33m,\u001b[39m \u001b[33mTEST_USER\u001b[39m\u001b[33m.\u001b[39mpassword)\u001b[33m;\u001b[39m\n \u001b[90m 44 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mclick(\u001b[32m'button[type=\"submit\"]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 45 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[35m/dashboard/\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 46 |\u001b[39m }\n \u001b[90m 47 |\u001b[39m\n \u001b[90m 48 |\u001b[39m \u001b[36mfunction\u001b[39m decodeJwtPayload(token\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mRecord\u001b[39m\u001b[33m<\u001b[39m\u001b[33mstring\u001b[39m\u001b[33m,\u001b[39m number\u001b[33m>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 14,
+                            "line": 45
+                          },
+                          "message": "TimeoutError: page.waitForURL: Timeout 15000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"load\"\n============================================================\n\n  43 |   await page.fill('input[type=\"password\"], input[name=\"password\"]', TEST_USER.password);\n  44 |   await page.click('button[type=\"submit\"]');\n> 45 |   await page.waitForURL(/dashboard/, { timeout: 15000 });\n     |              ^\n  46 | }\n  47 |\n  48 | function decodeJwtPayload(token: string): Record<string, number> {\n    at loginViaUI (C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:45:14)\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:565:5"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:27:03.303Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-ccb33-n-and-logout-work-correctly\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-ccb33-n-and-logout-work-correctly\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 14,
+                        "line": 45
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-f6b320d5eb923f4c2f6c",
+              "file": "weekly-weight.spec.ts",
+              "line": 564,
+              "column": 7
+            },
+            {
+              "title": "REGRESSION: GET /api/weight-entries returns valid response",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 123,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:580:23",
+                        "location": {
+                          "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                          "column": 23,
+                          "line": 580
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 578 |\u001b[39m   test(\u001b[32m'REGRESSION: GET /api/weight-entries returns valid response'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ request }) \u001b[33m=>\u001b[39m {\n \u001b[90m 579 |\u001b[39m     \u001b[36mconst\u001b[39m token \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m loginViaApi(request)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 580 |\u001b[39m     expect(token)\u001b[33m.\u001b[39mnot\u001b[33m.\u001b[39mtoBeNull()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 581 |\u001b[39m\n \u001b[90m 582 |\u001b[39m     \u001b[36mconst\u001b[39m resp \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m request\u001b[33m.\u001b[39m\u001b[36mget\u001b[39m(\u001b[32m`${API_URL}/weight-entries`\u001b[39m\u001b[33m,\u001b[39m {\n \u001b[90m 583 |\u001b[39m       headers\u001b[33m:\u001b[39m { \u001b[33mAuthorization\u001b[39m\u001b[33m:\u001b[39m \u001b[32m`Bearer ${token}`\u001b[39m }\u001b[33m,\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                            "column": 23,
+                            "line": 580
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBeNull\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mnull\u001b[39m\n\n  578 |   test('REGRESSION: GET /api/weight-entries returns valid response', async ({ request }) => {\n  579 |     const token = await loginViaApi(request);\n> 580 |     expect(token).not.toBeNull();\n      |                       ^\n  581 |\n  582 |     const resp = await request.get(`${API_URL}/weight-entries`, {\n  583 |       headers: { Authorization: `Bearer ${token}` },\n    at C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts:580:23"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "loginViaApi error: apiRequestContext.post: connect ECONNREFUSED ::1:7164\nconnect ECONNREFUSED 127.0.0.1:7164\nCall log:\n\u001b[2m  - → POST https://localhost:7164/api/auth/login\u001b[22m\n\u001b[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\u001b[2m    - content-type: application/json\u001b[22m\n\u001b[2m    - content-length: 47\u001b[22m\n\n    at loginViaApi \u001b[90m(C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:26:32\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\\u001b[39mtest-cases\\weekly-weight.spec.ts:579:25 {\n  log: [\n    \u001b[32m'  - → POST https://localhost:7164/api/auth/login'\u001b[39m,\n    \u001b[32m'    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14'\u001b[39m,\n    \u001b[32m'    - accept: */*'\u001b[39m,\n    \u001b[32m'    - accept-encoding: gzip,deflate,br'\u001b[39m,\n    \u001b[32m'    - content-type: application/json'\u001b[39m,\n    \u001b[32m'    - content-length: 47'\u001b[39m\n  ],\n  name: \u001b[32m'AggregateError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts'\u001b[39m,\n      line: \u001b[33m26\u001b[39m,\n      column: \u001b[33m32\u001b[39m,\n      function: \u001b[32m'loginViaApi'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m'POST'\u001b[39m,\n    subtitle: \u001b[32m'localhost:7164/api/auth/login'\u001b[39m,\n    params: { url: \u001b[32m'https://localhost:7164/api/auth/login'\u001b[39m, method: \u001b[32m'POST'\u001b[39m },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@33'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@33'\u001b[39m,\n      _title: \u001b[32m'POST'\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1790263640953\u001b[39m,\n    error: {\n      message: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m,\n      stack: \u001b[32m'AggregateError: apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'connect ECONNREFUSED 127.0.0.1:7164\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m  - → POST https://localhost:7164/api/auth/login\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - user-agent: Playwright/1.63.0 (x64; windows 10.0) node/22.14\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept: */*\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - accept-encoding: gzip,deflate,br\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-type: application/json\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\x1B[2m    - content-length: 47\\x1B[22m\\n'\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at apiRequestContext.post: connect ECONNREFUSED ::1:7164\\n'\u001b[39m +\n        \u001b[32m'    at loginViaApi (C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:26:32)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Aryan\\\\Codes\\\\PersonalProjects\\\\DietTracker\\\\qa-artifacts\\\\test-cases\\\\weekly-weight.spec.ts:579:25'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-24T15:27:20.802Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-results\\weekly-weight-Weekly-Weigh-de9df-ries-returns-valid-response\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Aryan\\Codes\\PersonalProjects\\DietTracker\\qa-artifacts\\test-cases\\weekly-weight.spec.ts",
+                        "column": 23,
+                        "line": 580
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5ea3d312bda65bd42245-58b060b499996dc7cd6a",
+              "file": "weekly-weight.spec.ts",
+              "line": 578,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T15:24:48.431Z",
+    "duration": 152613.908,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 17,
+    "flaky": 0
+  }
+}

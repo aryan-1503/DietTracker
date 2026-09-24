@@ -14,6 +14,8 @@ public class AppDbContext : DbContext
     public DbSet<DailyEntry> DailyEntries { get; set; }
     public DbSet<UserSettings> UserSettings { get; set; }
     public DbSet<ReminderLog> ReminderLogs { get; set; }
+    public DbSet<DailyNote> DailyNotes { get; set; }
+    public DbSet<WeeklyWeight> WeeklyWeights { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -127,6 +129,32 @@ public class AppDbContext : DbContext
             entity.HasOne(rl => rl.User).WithMany()
                   .HasForeignKey(rl => rl.UserId).OnDelete(DeleteBehavior.Cascade);
             entity.Property(rl => rl.SentAt).HasDefaultValueSql("GETUTCDATE()");
+        });
+
+        // ── DailyNote ─────────────────────────────────────────────────────────
+        modelBuilder.Entity<DailyNote>(entity =>
+        {
+            entity.HasIndex(dn => new { dn.UserId, dn.EntryDate })
+                  .IsUnique().HasDatabaseName("UQ_DailyNotes_UserDate");
+            entity.HasIndex(dn => dn.UserId).HasDatabaseName("IX_DailyNotes_UserId");
+            entity.Property(dn => dn.EntryDate).HasColumnType("date");
+            entity.Property(dn => dn.NoteText).HasMaxLength(1000);
+            entity.HasOne(dn => dn.User).WithMany()
+                  .HasForeignKey(dn => dn.UserId).OnDelete(DeleteBehavior.Cascade);
+            entity.Property(dn => dn.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+            entity.Property(dn => dn.UpdatedAt).HasDefaultValueSql("GETUTCDATE()");
+        });
+
+        // ── WeeklyWeight ──────────────────────────────────────────────────────
+        modelBuilder.Entity<WeeklyWeight>(entity =>
+        {
+            entity.HasIndex(ww => new { ww.UserId, ww.Year, ww.WeekNumber })
+                  .IsUnique().HasDatabaseName("UQ_WeeklyWeights_UserWeek");
+            entity.HasIndex(ww => ww.UserId).HasDatabaseName("IX_WeeklyWeights_UserId");
+            entity.Property(ww => ww.WeightKg).HasColumnType("decimal(5,1)");
+            entity.HasOne(ww => ww.User).WithMany()
+                  .HasForeignKey(ww => ww.UserId).OnDelete(DeleteBehavior.Cascade);
+            entity.Property(ww => ww.RecordedAt).HasDefaultValueSql("GETUTCDATE()");
         });
     }
 }

@@ -180,6 +180,71 @@
         </section>
       }
 
+      <!-- ── WEEKLY WEIGHT CHART ───────────────────────────────────────── -->
+      <section class="db-card">
+        <h2 class="db-section-title">Weekly Weight</h2>
+
+        @if (weightEntries().length === 0) {
+          <div class="db-chart-empty">No weight entries yet — log your weekly weight to see the chart.</div>
+        } @else {
+          <svg
+            class="db-chart-svg"
+            [attr.viewBox]="'0 0 ' + W_CHART_W + ' ' + W_CHART_H"
+            aria-label="Weekly weight chart"
+          >
+            <!-- Grid lines -->
+            <line
+              [attr.x1]="W_PAD.left" [attr.y1]="W_PAD.top"
+              [attr.x2]="W_PAD.left" [attr.y2]="W_CHART_H - W_PAD.bottom"
+              stroke="#e5e7eb" stroke-width="1"
+            />
+            <line
+              [attr.x1]="W_PAD.left" [attr.y1]="W_CHART_H - W_PAD.bottom"
+              [attr.x2]="W_CHART_W - W_PAD.right" [attr.y2]="W_CHART_H - W_PAD.bottom"
+              stroke="#e5e7eb" stroke-width="1"
+            />
+            <!-- Y labels -->
+            @for (yl of weightYLabels(); track yl.label) {
+              <text
+                [attr.x]="W_PAD.left - 4"
+                [attr.y]="yl.y + 3"
+                text-anchor="end"
+                font-size="8"
+                fill="#9ca3af"
+              >{{ yl.label }}</text>
+            }
+            <!-- Area fill -->
+            <path [attr.d]="weightChartAreaPath()" fill="#bfdbfe" opacity="0.4"/>
+            <!-- Line -->
+            <path
+              [attr.d]="weightChartPath()"
+              fill="none"
+              stroke="#2563eb"
+              stroke-width="2"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+            />
+            <!-- Data points -->
+            @for (pt of weightChartPoints(); track pt.label) {
+              <circle [attr.cx]="pt.x" [attr.cy]="pt.y" r="3" fill="#2563eb">
+                <title>{{ pt.label }}: {{ pt.kg }} kg</title>
+              </circle>
+            }
+            <!-- X axis labels -->
+            @for (lbl of weightXLabels(); track lbl.label) {
+              <text
+                [attr.x]="lbl.x"
+                [attr.y]="W_CHART_H - 6"
+                text-anchor="middle"
+                font-size="8"
+                fill="#9ca3af"
+              >{{ lbl.label }}</text>
+            }
+          </svg>
+          <div class="db-chart-note">Weight in kg per week since diet plan start date.</div>
+        }
+      </section>
+
       <!-- ── NAV CARDS ─────────────────────────────────────────────────── -->
       <div class="db-nav-grid">
         <div class="db-nav-card" (click)="goToDailyIntake()">
@@ -196,11 +261,25 @@
             <span class="db-nav-card__sub">Manage your plans</span>
           </div>
         </div>
+        <div class="db-nav-card" (click)="goToWeightLog()">
+          <span class="db-nav-card__icon">⚖️</span>
+          <div class="db-nav-card__text">
+            <span class="db-nav-card__title">Weight Log</span>
+            <span class="db-nav-card__sub">View &amp; edit weekly weights</span>
+          </div>
+        </div>
+        <div class="db-nav-card" (click)="goToReports()">
+          <span class="db-nav-card__icon">📊</span>
+          <div class="db-nav-card__text">
+            <span class="db-nav-card__title">Reports</span>
+            <span class="db-nav-card__sub">Monthly Excel export</span>
+          </div>
+        </div>
         <div class="db-nav-card" (click)="goToSettings()">
           <span class="db-nav-card__icon">⚙️</span>
           <div class="db-nav-card__text">
             <span class="db-nav-card__title">Settings</span>
-            <span class="db-nav-card__sub">Reminders & timezone</span>
+            <span class="db-nav-card__sub">Reminders &amp; timezone</span>
           </div>
         </div>
       </div>

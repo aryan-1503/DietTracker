@@ -26,6 +26,7 @@ public class DailyIntakeDto
     public string DietPlanName { get; set; } = string.Empty;
     public DateOnly Date       { get; set; }
     public List<SlotIntakeDto> Slots { get; set; } = new();
+    public DailyNoteDto? DailyNote { get; set; }
 }
 
 public class SlotIntakeDto
@@ -88,4 +89,25 @@ public class UpdateUserSettingsRequestDto
     [Required]
     [MaxLength(100)]
     public string TimeZoneId { get; set; } = "UTC";
+}
+
+// ── Daily Note DTOs ────────────────────────────────────────────────────────────
+
+public class DailyNoteDto
+{
+    public int      Id        { get; set; }
+    public int      UserId    { get; set; }
+    public DateOnly EntryDate { get; set; }
+    public string?  NoteText  { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
+}
+
+public class UpsertDailyNoteRequest
+{
+    [Required]
+    public DateOnly EntryDate { get; set; }
+
+    [MaxLength(1000)]
+    public string? NoteText { get; set; }
 }

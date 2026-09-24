@@ -256,6 +256,48 @@ $red-light: #fee2e2;
     }
   }
 
+  .di-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .di-radio-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1.5px solid $gray-200;
+    transition: border-color 0.15s, background 0.15s;
+
+    &:has(input:checked) {
+      border-color: $purple;
+      background: $purple-light;
+    }
+
+    input[type="radio"] {
+      width: 17px;
+      height: 17px;
+      accent-color: $purple;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: 500;
+      color: $gray-600;
+      user-select: none;
+    }
+
+    &:has(input:checked) span {
+      color: $purple;
+    }
+  }
+
   .char-limit {
     font-size: 11px;
     color: $gray-400;
@@ -422,4 +464,81 @@ $red-light: #fee2e2;
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 16px;
+}
+
+
+// ── Daily Intake Note Section ──────────────────────────────────────────────────
+
+.di-note-section {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid $gray-200;
+  padding: 16px;
+  margin: 16px 0 24px;
+
+  &__label {
+    font-size: 14px;
+    font-weight: 600;
+    color: $gray-900;
+    margin-bottom: 10px;
+  }
+
+  &__textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $gray-200;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: $gray-900;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.5;
+    &:focus { outline: none; border-color: $purple; box-shadow: 0 0 0 3px rgba(79,70,229,.12); }
+    &::placeholder { color: $gray-400; }
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+  }
+
+  &__save {
+    display: block;
+    margin-top: 12px;
+    width: 100%;
+    padding: 12px;
+    background: $purple;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+
+    &:hover:not(:disabled) { opacity: 0.9; }
+    &:disabled { opacity: 0.5; cursor: default; }
+  }
+}
+
+.di-note-chars {
+  font-size: 11px;
+  color: $gray-400;
+  &--warn { color: $orange; }
+  &--over { color: $red; }
+}
+
+.di-note-error {
+  font-size: 13px;
+  color: $red;
+  margin-top: 6px;
+}
+
+.di-note-saved {
+  font-size: 13px;
+  color: $green;
+  font-weight: 500;
+  margin-top: 6px;
 }

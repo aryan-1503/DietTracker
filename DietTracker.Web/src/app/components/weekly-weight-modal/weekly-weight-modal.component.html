@@ -1,0 +1,62 @@
+<div class="ww-overlay" role="dialog" aria-modal="true" aria-labelledby="ww-title">
+  <div class="ww-modal">
+    <div class="ww-modal__header">
+      <span class="ww-modal__icon">⚖️</span>
+      <h2 class="ww-modal__title" id="ww-title">Log Your Weekly Weight</h2>
+    </div>
+
+    <p class="ww-modal__subtitle">
+      Enter your weight for <strong>{{ pendingCheck.pendingWeekLabel }}</strong>.
+    </p>
+
+    <div class="ww-modal__field">
+      <label for="ww-input" class="ww-modal__label">Weight (kg)</label>
+      <div class="ww-modal__input-wrap">
+        <input
+          id="ww-input"
+          type="number"
+          class="ww-modal__input"
+          [(ngModel)]="weightInput"
+          min="20"
+          max="300"
+          step="0.1"
+          placeholder="e.g. 72.5"
+          autocomplete="off"
+          [disabled]="saving()"
+        />
+        <span class="ww-modal__unit">kg</span>
+      </div>
+
+      @if (weightInput !== null && !isValid) {
+        <div class="ww-modal__validation">
+          Weight must be between 20 and 300 kg, with at most 1 decimal place.
+        </div>
+      }
+    </div>
+
+    @if (errorMsg()) {
+      <div class="ww-modal__error">{{ errorMsg() }}</div>
+    }
+
+    <div class="ww-modal__actions">
+      <button
+        class="ww-btn ww-btn--primary"
+        [disabled]="!isValid || saving()"
+        (click)="save()"
+      >
+        @if (saving()) {
+          <span class="ww-btn__spinner"></span> Saving…
+        } @else {
+          Save
+        }
+      </button>
+      <button
+        class="ww-btn ww-btn--ghost"
+        [disabled]="saving()"
+        (click)="dismiss()"
+      >
+        Enter Later
+      </button>
+    </div>
+  </div>
+</div>

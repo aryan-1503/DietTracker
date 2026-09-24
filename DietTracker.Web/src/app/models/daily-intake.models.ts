@@ -32,6 +32,7 @@ export interface DailyIntakeDto {
   dietPlanName: string;
   date: string;            // YYYY-MM-DD
   slots: SlotIntakeDto[];
+  dailyNote: DailyNoteDto | null;
 }
 
 export interface DailyIntakeResponse {
@@ -61,4 +62,32 @@ export interface UserSettingsDto {
 export interface UpdateUserSettingsRequest {
   reminderTime: string;
   timeZoneId: string;
+}
+
+// ── Daily Note ─────────────────────────────────────────────────────────────────
+
+export interface DailyNoteDto {
+  id: number;
+  userId: number;
+  entryDate: string;       // YYYY-MM-DD
+  noteText: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface UpsertDailyNoteRequest {
+  entryDate: string;       // YYYY-MM-DD
+  noteText: string | null;
+}
+
+// ── Reports ────────────────────────────────────────────────────────────────────
+
+export interface MonthlyReportMetaDto {
+  year: number;
+  month: number;
+  monthName: string;
+  dietPlanName: string | null;
+  totalDays: number;
+  daysWithData: number;
+  hasAnyData: boolean;
 }

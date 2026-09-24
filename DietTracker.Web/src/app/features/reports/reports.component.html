@@ -1,0 +1,82 @@
+<div class="rp-layout">
+
+  <!-- Topbar -->
+  <div class="rp-topbar">
+    <button class="rp-topbar__back" (click)="goBack()" aria-label="Back">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <span class="rp-topbar__title">Reports</span>
+  </div>
+
+  <div class="rp-content">
+
+    <!-- Month selector -->
+    <div class="rp-card">
+      <div class="rp-card__label">Select Month</div>
+      <select class="rp-select"
+              [value]="selectedValue()"
+              (change)="onMonthChange($any($event.target).value)">
+        @for (opt of monthOptions(); track opt.value) {
+          <option [value]="opt.value">{{ opt.label }}</option>
+        }
+      </select>
+    </div>
+
+    <!-- Loading -->
+    @if (loading()) {
+      <div class="rp-loading">Loading report info…</div>
+    }
+
+    <!-- Error (no meta yet) -->
+    @else if (error() && !meta()) {
+      <div class="rp-error">{{ error() }}</div>
+    }
+
+    <!-- Meta + download -->
+    @else if (meta()) {
+      @let m = meta()!;
+
+      <div class="rp-card rp-card--info">
+        <div class="rp-info-row">
+          <span class="rp-info-label">Period</span>
+          <span class="rp-info-value">{{ m.monthName }} {{ m.year }}</span>
+        </div>
+        <div class="rp-info-row">
+          <span class="rp-info-label">Diet Plan</span>
+          <span class="rp-info-value">{{ m.dietPlanName ?? 'No primary plan' }}</span>
+        </div>
+        <div class="rp-info-row">
+          <span class="rp-info-label">Days with data</span>
+          <span class="rp-info-value">{{ m.daysWithData }} of {{ m.totalDays }} days</span>
+        </div>
+        @if (!m.hasAnyData) {
+          <div class="rp-notice">
+            ⚠️ No meals logged for this month. The report will contain empty rows.
+          </div>
+        }
+      </div>
+
+      <!-- Download button -->
+      <button class="rp-btn-download"
+              (click)="downloadExcel()"
+              [disabled]="downloading()">
+        @if (downloading()) {
+          <span>Generating…</span>
+        } @else {
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          <span>Download Excel</span>
+        }
+      </button>
+
+      @if (error()) {
+        <div class="rp-error" style="margin-top:12px">{{ error() }}</div>
+      }
+    }
+
+  </div>
+</div>

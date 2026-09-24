@@ -9,6 +9,7 @@ import {
   DailyIntakeDto,
   SlotIntakeDto,
   UpsertDailyEntryRequest,
+  UpsertDailyNoteRequest,
 } from '../../models/daily-intake.models';
 
 const OTHER_ID = -1;           // sentinel value for the "Other" option
@@ -46,6 +47,13 @@ export class DailyIntakeComponent implements OnInit {
   readonly expandedSlotId = signal<number | null>(null);
   readonly formStates = signal<Map<number, SlotFormState>>(new Map());
 
+  // ── Daily Note State ───────────────────────────────────────────────────────
+  readonly dailyNote = signal<string>('');
+  readonly dailyNoteSaving = signal(false);
+  readonly dailyNoteError = signal<string | null>(null);
+  readonly dailyNoteSaved = signal(false);
+  readonly NOTE_MAX_CHARS = 1000;
+
   readonly OTHER_ID = OTHER_ID;
   readonly OTHER_MAX_CHARS = OTHER_MAX_CHARS;
 
@@ -59,6 +67,7 @@ export class DailyIntakeComponent implements OnInit {
   readonly allComplete = computed(() =>
     this.totalCount() > 0 && this.completedCount() === this.totalCount());
   readonly isToday = computed(() => this.selectedDate() === this.todayStr());
+  readonly noteCharsLeft = computed(() => this.NOTE_MAX_CHARS - this.dailyNote().length);
 
   // ── Lifecycle ──────────────────────────────────────────────────────────────
   ngOnInit(): void {
@@ -84,6 +93,9 @@ export class DailyIntakeComponent implements OnInit {
       next: res => {
         this.hasPrimaryPlan.set(res.hasPrimaryPlan);
         this.intake.set(res.data);
+        this.dailyNote.set(res.data?.dailyNote?.noteText ?? '');
+        this.dailyNoteError.set(null);
+        this.dailyNoteSaved.set(false);
         this.loading.set(false);
         // Pre-expand first incomplete slot for today
         if (res.hasPrimaryPlan && res.data && this.isToday()) {
@@ -147,7 +159,8 @@ export class DailyIntakeComponent implements OnInit {
     const entry = slot.entry;
     const state: SlotFormState = {
       slotId: slot.mealSlotId,
-      followedPlan: entry?.followedPlan ?? false,
+      // Default to true (followed) for new entries; use saved value when one exists
+      followedPlan: entry ? entry.followedPlan : true,
       actualTime: entry?.actualTime ?? '',
       foodOptionId: entry
         ? (entry.foodOptionId ?? (entry.otherText ? OTHER_ID : null))
@@ -246,7 +259,10 @@ export class DailyIntakeComponent implements OnInit {
           }
           this.intake.set({ ...current, slots: updatedSlots });
         }
-        this.updateFormState(slot.mealSlotId, { saving: false });
+        // Remove cached form state so re-opening re-initialises from the saved entry
+        const map = new Map(this.formStates());
+        map.delete(slot.mealSlotId);
+        this.formStates.set(map);
         this.expandedSlotId.set(null);
       },
       error: () => {
@@ -279,5 +295,34 @@ export class DailyIntakeComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/dashboard']);
+  }
+
+  // ── Daily Note ─────────────────────────────────────────────────────────────
+
+  saveNote(): void {
+    if (this.dailyNote().length > this.NOTE_MAX_CHARS) {
+      this.dailyNoteError.set(`Note must be ${this.NOTE_MAX_CHARS} characters or fewer.`);
+      return;
+    }
+    this.dailyNoteSaving.set(true);
+    this.dailyNoteError.set(null);
+    this.dailyNoteSaved.set(false);
+
+    const payload: UpsertDailyNoteRequest = {
+      entryDate: this.selectedDate(),
+      noteText: this.dailyNote().trim() || null,
+    };
+
+    this.svc.upsertNote(payload).subscribe({
+      next: () => {
+        this.dailyNoteSaving.set(false);
+        this.dailyNoteSaved.set(true);
+        setTimeout(() => this.dailyNoteSaved.set(false), 2500);
+      },
+      error: () => {
+        this.dailyNoteSaving.set(false);
+        this.dailyNoteError.set('Failed to save note. Please try again.');
+      },
+    });
   }
 }

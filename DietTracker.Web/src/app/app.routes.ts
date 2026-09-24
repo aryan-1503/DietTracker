@@ -90,5 +90,19 @@ export const routes: Routes = [
       import('./features/settings/user-settings.component').then(m => m.UserSettingsComponent),
   },
 
+  {
+    path: 'reports',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/reports/reports.component').then(m => m.ReportsComponent),
+  },
+
+  {
+    path: 'weight-log',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/weight-log/weight-log.component').then(m => m.WeightLogComponent),
+  },
+
   { path: '**', redirectTo: 'dashboard' },
 ];
