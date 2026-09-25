@@ -5,6 +5,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { WeightService } from './services/weight.service';
+import { WeightPopupDeferralService } from './services/weight-popup-deferral.service';
 import { WeeklyWeightModalComponent } from './components/weekly-weight-modal/weekly-weight-modal.component';
 import { PendingWeightCheck } from './models/weight.models';
 
@@ -27,12 +28,10 @@ export class AppComponent implements OnInit {
   private auth = inject(AuthService);
   private weightSvc = inject(WeightService);
   private router = inject(Router);
+  private deferral = inject(WeightPopupDeferralService);
 
   readonly showWeightModal = signal(false);
   readonly pendingCheck = signal<PendingWeightCheck | null>(null);
-
-  /** Track if we already checked this session tab (so we only dismiss once per tab). */
-  private checkedThisSession = false;
 
   ngOnInit(): void {
     // Trigger check on every navigation (covers app load, login redirect, route changes)
@@ -46,8 +45,12 @@ export class AppComponent implements OnInit {
   private maybeTriggerWeightCheck(): void {
     // Only check when authenticated
     if (!this.auth.isLoggedIn()) return;
-    // If already dismissed this session and modal is hidden, skip
-    if (this.checkedThisSession && !this.showWeightModal()) return;
+
+    // If modal is already open, do nothing — avoid stacking calls
+    if (this.showWeightModal()) return;
+
+    // Respect the "Enter Later" deferral: skip until end of current calendar day
+    if (this.deferral.isDeferredForToday()) return;
 
     this.weightSvc.getPendingCheck().subscribe({
       next: (check) => {
@@ -65,7 +68,8 @@ export class AppComponent implements OnInit {
   onWeightSaved(): void {
     this.showWeightModal.set(false);
     this.pendingCheck.set(null);
-    this.checkedThisSession = true;
+    // Clear any lingering deferral so normal weekly-check logic resumes
+    this.deferral.clearDeferral();
     // Trigger dashboard refresh by navigating to current route
     const currentUrl = this.router.url;
     if (currentUrl.includes('/dashboard')) {
@@ -76,10 +80,11 @@ export class AppComponent implements OnInit {
   }
 
   onWeightDismissed(): void {
-    // Dismiss for this tab session only — no local storage flag
     this.showWeightModal.set(false);
-    // Do NOT set checkedThisSession = true, so next navigation re-check fires
-    // But we do reset so the next navigation re-opens the modal
-    this.checkedThisSession = false;
+    this.pendingCheck.set(null);
+    // Persist the deferral until 23:59:59 of the current local day.
+    // Subsequent navigations and page reloads will read this value and skip
+    // the popup for the rest of the day.
+    this.deferral.deferUntilEndOfDay();
   }
 }
