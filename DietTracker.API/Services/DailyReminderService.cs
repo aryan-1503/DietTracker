@@ -102,8 +102,8 @@ public class DailyReminderService : BackgroundService
                 var currentHhMm = userLocalNow.ToString("HH:mm");
 
                 // Only fire at the configured minute
-                if (currentHhMm != reminderTime)
-                    continue;
+                // if (currentHhMm != reminderTime)
+                //     continue;
 
                 var today = DateOnly.FromDateTime(userLocalNow);
 
